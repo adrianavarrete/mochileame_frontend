@@ -1,0 +1,90 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Mochileame
+      </ion-title>
+    </ion-toolbar>
+
+  </ion-header>
+
+  <ion-content>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Datos del usuario</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Apellidos</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Fecha de nacimiento</ion-label>
+                <ion-datetime display-format="DD.MM.YYYY">
+                </ion-datetime>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Nacionalidad</ion-label>
+                <ion-input type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Género</ion-label>
+                <ion-select multiple="false" placeholder="Selecciona un genero">
+                  <ion-select-option value="Masculino">Masculino</ion-select-option>
+                  <ion-select-option value="Femenino">Femenino</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Biografía</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-textarea placeholder="Describete de la mejor forma posible :)"></ion-textarea>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Hobbies</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-select multiple="true" placeholder="Selecciona tus hobbies favoritos" okText="Ok"
+                  cancelText="Cancelar">
+                  <ion-select-option value="Deportes">Deportes</ion-select-option>
+                  <ion-select-option value="Tecnología ">Tecnología</ion-select-option>
+                  <ion-select-option value="Animales">Animales</ion-select-option>
+                  <ion-select-option value="Gastronomía">Gastronomía</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+
+</ion-app>

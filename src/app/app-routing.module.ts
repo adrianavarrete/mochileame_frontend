@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { ProfileDetailsPage } from './profile-details/profile-details.page';
+import { ProfileDetailsPage } from './pages/profile-details/profile-details.page';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'profile-details', pathMatch: 'full' },
+  //{ path: '', redirectTo: 'tabs', pathMatch: 'full' },
   {
     path: 'profile-details',
-    loadChildren: () => import('./profile-details/profile-details.module').then(m => m.ProfileDetailsPageModule)
+    loadChildren: () => import('./pages/profile-details/profile-details.module').then(m => m.ProfileDetailsPageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'details',
+    loadChildren: () => import('./pages/details/details.module').then( m => m.DetailsPageModule)
   },
 
 ];
