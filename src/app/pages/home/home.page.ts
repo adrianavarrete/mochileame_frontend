@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
   constructor(private service: routesService) { }
  
 
-  listaTravelGroups;
+  listaTravelGroups: TravelGroup[];
   ngOnInit() {
 
     
