@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ProfileDetailsPage } from './pages/profile-details/profile-details.page';
+import {LoguinPage} from './pages/loguin/loguin.page';
 
 const routes: Routes = [
   //{ path: '', redirectTo: 'tabs', pathMatch: 'full' },
@@ -12,10 +13,14 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
   },
-  {
-    path: 'details',
-    loadChildren: () => import('./pages/details/details.module').then( m => m.DetailsPageModule)
-  },
+
+  ////////////////////////intento
+{
+    path: 'login',
+    loadChildren: () => import('./pages/loguin/loguin.module').then(m => m.LoguinPageModule)
+
+}
+  /////////////////
 
 ];
 
