@@ -1,8 +1,3 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
 
@@ -14,10 +9,11 @@
                 ng-class="{active: isGroupShown(group)}">
           <div class="row">
               <div class="col">
-                  <div class="custIcon"><img ng-src="{{group.iconURL}}" /></div>
+                  
               </div>
               <div class="col col-80 listHead">{{object.name}}</div>
-                <div class="col"><div class="item-icon-right"><i class="icon" ng-class="isGroupShown(group) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i></div>
+                <div class="col">
+                    </div>
               </div>
         </ion-item>
  
@@ -25,5 +21,4 @@
     </div>
   </ion-list>
 
-</ion-content
->
+</ion-content>
