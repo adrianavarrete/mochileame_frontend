@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {routesService} from '../../services/routesService';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-loguin',
@@ -7,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoguinPage implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
+  constructor(private service: routesService) { }
+  
+
+  ngOnInit(
+    
+  ) {
   }
 
 }
