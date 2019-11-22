@@ -18,9 +18,9 @@ export class routesService {
     readonly URL_API = 'http://localhost:3000';
 
 
-    getTravelGroups(){
+    getTravelGroups():Observable<TravelGroup[]>{
         
-        return this.http.get(this.URL_API +'/travelgroups')
+        return this.http.get<TravelGroup []>(this.URL_API +'/travelgroups')
     }
 
 }
