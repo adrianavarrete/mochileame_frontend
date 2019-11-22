@@ -23,4 +23,9 @@ export class routesService {
         return this.http.get<TravelGroup []>(this.URL_API +'/travelgroups')
     }
 
+    addUserInGroup(travelGroup : TravelGroup, id :string){
+
+        return this.http.put(this.URL_API + '/travelAddUser' + `/${id}`, travelGroup)
+    }
+
 }
