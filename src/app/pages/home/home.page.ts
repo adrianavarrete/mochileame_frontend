@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { element } from 'protractor';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { NgForm } from '@angular/forms';
+import {MisGruposPage} from '../mis-grupos/mis-grupos.page'
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ import { NgForm } from '@angular/forms';
 export class HomePage implements OnInit {
 
 
-  constructor(private service: routesService) { }
+  constructor(private service: routesService, private misGrupos: MisGruposPage) { }
  
   existe: Boolean;
   id: string = "";
@@ -40,11 +41,14 @@ this.getListaTravelGroups();
     .subscribe((res) =>{
 
       console.log(res);
-      this.getListaTravelGroups;
+      this.getListaTravelGroups();
+      this.misGrupos.getListaTravelGroups();
 
     }),((error) => {
       console.log(error);
    });
+
+  
 
   }
 

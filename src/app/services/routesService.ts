@@ -20,7 +20,7 @@ export class routesService {
 
     getTravelGroups():Observable<TravelGroup[]>{
         
-        return this.http.get<TravelGroup []>(this.URL_API +'/travelgroups')
+        return this.http.get<TravelGroup []>(this.URL_API +'/travelgroup')
     }
 
     addUserInGroup(travelGroup : TravelGroup, id :string){
