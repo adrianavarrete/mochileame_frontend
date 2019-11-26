@@ -23,7 +23,16 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pages/loguin/loguin.module').then(m => m.LoguinPageModule)
 
-}
+},
+  {
+    path: 'mis-grupos',
+    loadChildren: () => import('./pages/mis-grupos/mis-grupos.module').then( m => m.MisGruposPageModule)
+  },
+  {
+    path: 'mis-grupos',
+    loadChildren: () => import('./pages/mis-grupos/mis-grupos.module').then( m => m.MisGruposPageModule)
+  }
+
   /////////////////
 
 ];
