@@ -1,41 +1,21 @@
-<ion-app>
-      <ion-content>
-          <ion-grid fixed>
-            <ion-row >
-              <ion-col size-md="6" offset-md="3">
-                <ion-card>
-                  <ion-card-header>
-                    <ion-card-title>LOGIN</ion-card-title>
-                  </ion-card-header>
-                  <ion-card-content>
-                    <ion-item>
-                      <ion-label position="floating">Nombre</ion-label>
-                      <ion-input></ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-label position="floating">Contraseña</ion-label>
-                      <ion-input></ion-input>
-                    </ion-item>
-                    
-                  
-                   
-                  </ion-card-content>
+<ion-header>
 
-                                  
-                </ion-card>
-                <button ion-button large>Login</button>
-                    
-  
-  
-             
+    <ion-toolbar>
+      <ion-title>Login</ion-title>
+    </ion-toolbar>
+      </ion-header>
+  <ion-content >
+    <form #form="ngForm" (ngSubmit)="login(form)" method="post">
+      <ion-item>
+        <ion-label position="floating">username</ion-label>
+        <ion-input ngModel type="username" name="username" placeholder="nombre"></ion-input>
+        <ion-label position="floating">password</ion-label>
+        <ion-input ngModel type="password" name="password" placeholder="contraseña"></ion-input>
       
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-    
-          
-    
-
-</ion-content>
-
-</ion-app>
+      </ion-item>    
+              
+      <ion-button type="submit" expand="full" color="primary">Login</ion-button>
+    </form>
+    </ion-content>
+ 
+        
