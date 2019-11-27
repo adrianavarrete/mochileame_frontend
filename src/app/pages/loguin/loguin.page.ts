@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 
 
 
+
 @Component({
   selector: 'app-loguin',
   templateUrl: './loguin.page.html',
@@ -40,6 +41,9 @@ export class LoguinPage implements OnInit {
          }else if (res != null)
          {
           this.userLogin = res;
+          
+          localStorage.setItem("idUser", res._id);
+
           
            
          }

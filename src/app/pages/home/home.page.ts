@@ -19,7 +19,8 @@ export class HomePage implements OnInit {
   //private misGrupos: MisGruposPage
  
   existe: Boolean;
-  id: string = "";
+  token: string = localStorage.getItem('idUser');
+  id: string;
   travelGroup : TravelGroup;
   protected listaTravelGroups: TravelGroup[] = [];
   addInTravelGroup: TravelGroup;
@@ -27,7 +28,8 @@ export class HomePage implements OnInit {
 
 
   ngOnInit() {
-this.getListaTravelGroups();
+    this.id = localStorage.getItem('idUser');
+    this.getListaTravelGroups();
   }
 
   addUserInGroup(addUserTravelGroup : TravelGroup)
