@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {routesService} from '../../services/routesService';
+import { routesService } from '../../services/routesService';
 import { HttpClientModule } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
-import { Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 
 
@@ -25,30 +25,24 @@ export class LoguinPage implements OnInit {
   ngOnInit() {
   }
 
-  login(form: NgForm){
+  login(form: NgForm) {
 
 
-      this.userService.login(form.value.username, form.value.password)
-      .subscribe((res) => {console.log(res)
-       
-        if ( res == null)
-         {
-       
-         }else if (res != null)
-         {
+    this.userService.login(form.value.username, form.value.password)
+      .subscribe((res) => {
+        console.log(res)
+
+        if (res == null) {
+
+        } else if (res != null) {
           this.userLogin = res;
-          
+
           localStorage.setItem("idUser", res._id);
-          
           this.router.navigateByUrl("/tabs/tab1");
-
-
-          
-           
-         }
+        }
       })
-    
-    
+
+
 
   }
 

@@ -15,32 +15,40 @@ import { NgForm } from '@angular/forms';
 export class ProfileDetailsPage implements OnInit {
 
   user = new User();
-  _id = '5dd58ae047cf7c25c04f1a4c';
-  username = 'prueba';
-  mail = 'mail';
-  password = 'wfwf';
+  idUser = localStorage.getItem("idUser");
+
 
   constructor(public userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.getUser(this.idUser);
   }
 
   updateProfileDetails(form: NgForm) {
 
     // this.phones.set(form.value.key, form.value.value);
 
-    this.user._id = this._id;
-    this.user.username = this.username;
-    this.user.mail = this.mail;
-    this.user.password = this.password;
-
-    this.user.name = form.value.name;
-    this.user.lastname = form.value.lastname;
-    this.user.dateofbirth = form.value.dateofbirth;
-    this.user.nationality = form.value.nationality;
-    this.user.gender = form.value.gender;
-    this.user.biography = form.value.biography;
-    this.user.hobbies = form.value.hobbies;
+    if(form.value.name != null){
+      this.user.name = form.value.name;
+    }
+    if(form.value.lastname != null){
+      this.user.lastname = form.value.lastname;
+    }
+    if(form.value.dateofbirth != null){
+      this.user.dateofbirth = form.value.dateofbirth;
+    }
+    if(form.value.nationality != null){
+      this.user.nationality = form.value.nationality;
+    }
+    if(form.value.gender != null){
+      this.user.gender = form.value.gender;
+    }
+    if(form.value.biography != null){
+      this.user.biography = form.value.biography;
+    }
+    if(form.value.hobbies != null){
+      this.user.hobbies = form.value.hobbies;
+    }
 
     console.log(this.user);
 
@@ -48,9 +56,20 @@ export class ProfileDetailsPage implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.resetForm(form);
-
+        this.router.navigateByUrl("/tabs/tab1");
+        
       });
 
+  }
+
+  getUser(idUser: string) {
+    this.userService.getUsuario(idUser)
+      .subscribe(res => {
+        console.log(res);
+        this.user = res;
+        console.log(this.user);
+
+      });
   }
 
   resetForm(form?: NgForm) {
