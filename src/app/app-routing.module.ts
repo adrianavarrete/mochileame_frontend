@@ -31,7 +31,12 @@ const routes: Routes = [
   {
     path: 'mis-grupos',
     loadChildren: () => import('./pages/mis-grupos/mis-grupos.module').then( m => m.MisGruposPageModule)
+  },  {
+    path: 'sign-up',
+    loadChildren: () => import('./pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
   }
+
+
 
   /////////////////
 
