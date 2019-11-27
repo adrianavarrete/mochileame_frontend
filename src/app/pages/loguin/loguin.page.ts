@@ -21,12 +21,7 @@ export class LoguinPage implements OnInit {
   constructor(private userService: UserService) { }
   userLogin: User;
 
-  ngOnInit(
-
-
-    
-    
-  ) {
+  ngOnInit() {
   }
 
   login(form: NgForm){

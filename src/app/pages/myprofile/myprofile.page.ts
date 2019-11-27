@@ -25,10 +25,11 @@ export class MyprofilePage implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.user = res;
+        console.log(this.user);
 
       });
   }
-  
+
   resetForm(form?: NgForm) {
     if (form) {
       form.reset();

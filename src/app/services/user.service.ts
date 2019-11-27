@@ -32,7 +32,11 @@ export class UserService {
   updateUser(user: User) {
     console.log(user);
     return this.http.put(this.URL_API + `/updateUser/${user._id}`, user);
+  }
 
+  register(user: User) {
+    console.log(user);
+    return this.http.post(this.URL_API + '/postuser/', user);
   }
 }
 

@@ -15,17 +15,13 @@
               </ion-card-header>
               <ion-card-content>
                 <ion-item>
-                  <ion-label position="floating">Nombre</ion-label>
-                  <ion-input type="text">{{user.name}}</ion-input>
+                  <ion-label>Nombre: {{user.name}}</ion-label>
                 </ion-item>
                 <ion-item>
-                  <ion-label position="floating">Apellidos</ion-label>
-                  <ion-input type="text" [(ngModel)]="lastname" name="lastname"></ion-input>
+                    <ion-label>Apellidos: {{user.lastname}}</ion-label>
                 </ion-item>
                 <ion-item>
-                  <ion-label position="floating">Fecha de nacimiento</ion-label>
-                  <ion-datetime display-format="DD.MM.YYYY" type="text" [(ngModel)]="dateofbirth" name="dateofbirth">
-                  </ion-datetime>
+                    <ion-label>Fecha de nacimiento: {{user.dateofbirth}}</ion-label>
                 </ion-item>
                 <ion-item>
                   <ion-label position="floating">Nacionalidad</ion-label>
