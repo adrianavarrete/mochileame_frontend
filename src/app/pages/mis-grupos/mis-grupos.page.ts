@@ -13,7 +13,7 @@ export class MisGruposPage implements OnInit {
   constructor(private service: routesService) { }
  
   existe: Boolean;
-  id: string = "5dbdc125f2c6a91b808a8033";
+  id: string;
   travelGroup : TravelGroup;
   protected listaTravelGroups: TravelGroup[] = [];
   addInTravelGroup: TravelGroup;
@@ -21,6 +21,7 @@ export class MisGruposPage implements OnInit {
 
 
   ngOnInit() {
+    this.id = localStorage.getItem('idUser');
 this.getListaTravelGroups();
   }
 

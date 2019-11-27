@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { element } from 'protractor';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { NgForm } from '@angular/forms';
-import {MisGruposPage} from '../mis-grupos/mis-grupos.page'
+//import {MisGruposPage} from '../mis-grupos/mis-grupos.page'
 
 @Component({
   selector: 'app-home',
@@ -15,10 +15,12 @@ import {MisGruposPage} from '../mis-grupos/mis-grupos.page'
 export class HomePage implements OnInit {
 
 
-  constructor(private service: routesService, private misGrupos: MisGruposPage) { }
+  constructor(private service: routesService) { }
+  //private misGrupos: MisGruposPage
  
   existe: Boolean;
-  id: string = "";
+  token: string = localStorage.getItem('idUser');
+  id: string;
   travelGroup : TravelGroup;
   protected listaTravelGroups: TravelGroup[] = [];
   addInTravelGroup: TravelGroup;
@@ -26,7 +28,8 @@ export class HomePage implements OnInit {
 
 
   ngOnInit() {
-this.getListaTravelGroups();
+    this.id = localStorage.getItem('idUser');
+    this.getListaTravelGroups();
   }
 
   addUserInGroup(addUserTravelGroup : TravelGroup)
@@ -42,7 +45,7 @@ this.getListaTravelGroups();
 
       console.log(res);
       this.getListaTravelGroups();
-      this.misGrupos.getListaTravelGroups();
+     // this.misGrupos.getListaTravelGroups();
 
     }),((error) => {
       console.log(error);
