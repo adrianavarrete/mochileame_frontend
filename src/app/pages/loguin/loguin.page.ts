@@ -40,10 +40,11 @@ export class LoguinPage implements OnInit {
           localStorage.setItem("idUser", res._id);
           this.router.navigateByUrl("/tabs/tab1");
         }
-      })
+      });
+  }
 
-
-
+  goRegister() {
+    this.router.navigateByUrl('/sign-up');
   }
 
 }
