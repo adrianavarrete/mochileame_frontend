@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
-
+import {Router} from '@angular/router';
 
 
 
@@ -18,7 +18,7 @@ import { UserService } from 'src/app/services/user.service';
 export class LoguinPage implements OnInit {
 
 
-  constructor(private userService: UserService) { }
+  constructor(private router: Router,private userService: UserService) { }
   userLogin: User;
 
   ngOnInit(
@@ -44,7 +44,7 @@ export class LoguinPage implements OnInit {
           
           localStorage.setItem("idUser", res._id);
 
-          
+          this.router.navigateByUrl("/tabs/tab1");
            
          }
       })

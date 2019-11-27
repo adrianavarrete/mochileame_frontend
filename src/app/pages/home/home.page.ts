@@ -57,6 +57,8 @@ export class HomePage implements OnInit {
 
   getListaTravelGroups()
   {
+
+    this.listaTravelGroups = [];
     this.service.getTravelGroups()
     .subscribe((res) => {
 
