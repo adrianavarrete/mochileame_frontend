@@ -4,10 +4,15 @@ div {
   }
   
   ion-card-header {
-    background-color: red;
+    background-color: rgb(210, 253, 145);
     border-radius: 10px 10px 0px 0px;
   }
   
   ion-card-content {
     border-radius: 0px 0px 10px 10px;
+  }
+
+  ion-button{
+--background: #a0e420;
+
   }
