@@ -14,7 +14,7 @@ const routes: Routes = [
       },
       {
         path: 'tab3',
-        loadChildren: () => import('../profile-details/profile-details.module').then(m => m.ProfileDetailsPageModule)
+        loadChildren: () => import('../myprofile/myprofile.module').then( m => m.MyprofilePageModule)
       },
       {
         path: 'tab2',
