@@ -20,12 +20,7 @@ export class LoguinPage implements OnInit {
   constructor(private userService: UserService) { }
   userLogin: User;
 
-  ngOnInit(
-
-
-    
-    
-  ) {
+  ngOnInit() {
   }
 
   login(form: NgForm){
@@ -39,8 +34,7 @@ export class LoguinPage implements OnInit {
        
          }else if (res != null)
          {
-          this.userLogin = res;
-          
+          this.userLogin = res;         
            
          }
       })
