@@ -22,7 +22,7 @@ export class HomePage implements OnInit {
   token: string = localStorage.getItem('idUser');
   id: string;
   travelGroup : TravelGroup;
-  protected listaTravelGroups: TravelGroup[] = [];
+  listaTravelGroups: TravelGroup[] = [];
   addInTravelGroup: TravelGroup;
   addUSerAddInTheGroup: TravelGroup;
 

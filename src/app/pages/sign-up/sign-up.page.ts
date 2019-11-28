@@ -4,6 +4,8 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { Router } from "@angular/router";
 import { Route } from '@angular/compiler/src/core';
+import { ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -14,12 +16,25 @@ import { Route } from '@angular/compiler/src/core';
 export class SignUpPage implements OnInit {
 
   user = new User();
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
+    route.params.subscribe(val => { // necesario para poder volver a ejecutar ngoninit al volver de otra pagina
+      this.getUser(this.id);
+    });
+
+  }
+
+  mail: any;
+  username: any;
+  pass: any;
+  pass2: any;
+  id: string;
+
 
   ngOnInit() {
   }
 
   registerUser(form: NgForm) {
+
 
     this.user.mail = form.value.mail;
     this.user.password = form.value.pass;
@@ -32,6 +47,7 @@ export class SignUpPage implements OnInit {
         .subscribe(res => {
           console.log(res);
           localStorage.setItem("idUser", res._id);
+          this.id = res._id;
           this.resetForm(form);
           this.router.navigateByUrl("/profile-details");
         });
@@ -46,5 +62,17 @@ export class SignUpPage implements OnInit {
       form.reset();
     }
   }
+
+  getUser(idUser: string) {
+    this.userService.getUsuario(idUser)
+      .subscribe(res => {
+        console.log(res);
+        this.user = res;
+        console.log(this.user);
+
+      });
+
+  }
+
 
 }

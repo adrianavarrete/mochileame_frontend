@@ -15,7 +15,7 @@ export class MisGruposPage implements OnInit {
   existe: Boolean;
   id: string;
   travelGroup : TravelGroup;
-  protected listaTravelGroups: TravelGroup[] = [];
+  listaTravelGroups: TravelGroup[] = [];
   addInTravelGroup: TravelGroup;
  
 

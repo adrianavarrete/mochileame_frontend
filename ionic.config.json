@@ -1,5 +1,7 @@
 {
   "name": "mochileameApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

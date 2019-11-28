@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -19,8 +20,14 @@ import { Router } from "@angular/router";
 export class LoguinPage implements OnInit {
 
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
+    route.params.subscribe(val => { // necesario para poder volver a ejecutar ngoninit al volver de otra pagina
+      this.getUser(this.userLogin._id);
+    });
+   }
   userLogin: User;
+
+
 
   ngOnInit() {
   }
@@ -45,6 +52,16 @@ export class LoguinPage implements OnInit {
 
   goRegister() {
     this.router.navigateByUrl('/sign-up');
+  }
+
+  getUser(idUser: string) {
+    this.userService.getUsuario(idUser)
+      .subscribe(res => {
+        console.log(res);
+        this.userLogin = res;
+
+      });
+
   }
 
 }

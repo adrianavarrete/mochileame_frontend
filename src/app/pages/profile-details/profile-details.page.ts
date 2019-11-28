@@ -17,6 +17,14 @@ export class ProfileDetailsPage implements OnInit {
   user = new User();
   idUser = localStorage.getItem("idUser");
 
+  name: any;
+  lastname: any;
+  dateofbirth: any;
+  nationality: any;
+  gender: any;
+  biography: any;
+  hobbies: any;
+
 
   constructor(public userService: UserService, private router: Router) { }
 
