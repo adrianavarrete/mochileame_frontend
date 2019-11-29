@@ -27,7 +27,7 @@ export class UserService {
     this.userNew.username = name;
     
     this.userNew.password = pass;
-    return this.http.post<User>(this.URL_API+ '/login', this.userNew);
+    return this.http.post<User>(this.URL_API+ '/login ', this.userNew);
   }
   updateUser(user: User):Observable<User> {
     console.log(user);
