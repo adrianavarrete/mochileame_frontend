@@ -20,11 +20,7 @@ import { ActivatedRoute } from '@angular/router';
 export class LoguinPage implements OnInit {
 
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
-    route.params.subscribe(val => { // necesario para poder volver a ejecutar ngoninit al volver de otra pagina
-      this.getUser(this.userLogin._id);
-    });
-   }
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {}
   userLogin: User;
 
 
