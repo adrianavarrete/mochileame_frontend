@@ -38,7 +38,7 @@ export class LoguinPage implements OnInit {
          {
           this.userLogin = res;
           
-          localStorage.setItem("idUser", res._id);
+         // localStorage.setItem("idUser", res._id);
           
           this.router.navigateByUrl("/tabs/tab1");
 
