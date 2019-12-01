@@ -52,6 +52,11 @@ export class MyprofilePage implements OnInit, OnDestroy {
     this.router.navigateByUrl('/profile-details');
   }
 
+  goFriends() {
+    this.router.navigateByUrl('/friends');
+  }
+
+
   logout() {
     localStorage.removeItem("idUser");
     this.router.navigateByUrl('/login');

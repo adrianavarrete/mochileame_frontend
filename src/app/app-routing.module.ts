@@ -36,6 +36,14 @@ const routes: Routes = [
   {
     path: 'sign-up',
     loadChildren: () => import('./pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
+  },
+  {
+    path: 'friends',
+    loadChildren: () => import('./pages/friends/friends.module').then( m => m.FriendsPageModule)
+  },
+  {
+    path: 'add-friends',
+    loadChildren: () => import('./pages/add-friends/add-friends.module').then( m => m.AddFriendsPageModule)
   }
 
 

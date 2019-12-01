@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {routesService} from '../../services/routesService';
-import {TravelGroup} from '../../models/travel-group';
+import { routesService } from '../../services/routesService';
+import { TravelGroup } from '../../models/travel-group';
 import { HttpClientModule } from '@angular/common/http';
 import { element } from 'protractor';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
@@ -17,11 +17,11 @@ export class HomePage implements OnInit {
 
   constructor(private service: routesService) { }
   //private misGrupos: MisGruposPage
- 
+
   existe: Boolean;
   token: string = localStorage.getItem('idUser');
   id: string;
-  travelGroup : TravelGroup;
+  travelGroup: TravelGroup;
   listaTravelGroups: TravelGroup[] = [];
   addInTravelGroup: TravelGroup;
   addUSerAddInTheGroup: TravelGroup;
@@ -32,8 +32,7 @@ export class HomePage implements OnInit {
     this.getListaTravelGroups();
   }
 
-  addUserInGroup(addUserTravelGroup : TravelGroup)
-  {
+  addUserInGroup(addUserTravelGroup: TravelGroup) {
     this.addInTravelGroup = addUserTravelGroup;
     this.addInTravelGroup.users.push(this.addInTravelGroup._id);
 
@@ -41,54 +40,51 @@ export class HomePage implements OnInit {
     this.addUSerAddInTheGroup.name = this.id;
 
     this.service.addUserInGroup(this.addUSerAddInTheGroup, this.addInTravelGroup._id)
-    .subscribe((res) =>{
+      .subscribe((res) => {
 
-      console.log(res);
-      this.getListaTravelGroups();
-     // this.misGrupos.getListaTravelGroups();
+        console.log(res);
+        this.getListaTravelGroups();
+        // this.misGrupos.getListaTravelGroups();
 
-    }),((error) => {
-      console.log(error);
-   });
+      }), ((error) => {
+        console.log(error);
+      });
 
-  
+
 
   }
 
-  getListaTravelGroups()
-  {
+  getListaTravelGroups() {
 
     this.listaTravelGroups = [];
     this.service.getTravelGroups()
-    .subscribe((res) => {
+      .subscribe((res) => {
 
-      res.forEach(element =>{
+        res.forEach(element => {
 
-        this.existe = false;
+          this.existe = false;
 
-        element.users.forEach(stringUser => {
-            
-          if (this.id == stringUser)
-          {
-            this.existe = true;
+          element.users.forEach(stringUser => {
+
+            if (this.id == stringUser) {
+              this.existe = true;
+            }
+
+          })
+          if (this.existe) {
+            console.log("NO LISTA");
+          }
+          else {
+            console.log("Se AÑADE EN LISTA", element);
+            this.listaTravelGroups.push(element);
           }
 
         })
-        if (this.existe)
-        {
-          console.log("NO LISTA");
-        }
-        else {
-          console.log("Se AÑADE EN LISTA", element);
-          this.listaTravelGroups.push(element);
-        }
 
-      })
-      
-      
-     }),((error) => {
+
+      }), ((error) => {
         console.log(error);
-     });
+      });
   }
 
 

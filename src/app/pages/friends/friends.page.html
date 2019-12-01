@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+        <ion-button (click)="goAddFriends()">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    <ion-title text-center>
+      Mochileame
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid fixed>
+    <form>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Seguidos</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                No sigues a nadie aún :(
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Seguidores</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              No tienes seguidores aún :(
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+    </form>
+    <ion-card-content>
+    </ion-card-content>
+  </ion-grid>
+
+
+</ion-content>
