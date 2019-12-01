@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.page.html',
