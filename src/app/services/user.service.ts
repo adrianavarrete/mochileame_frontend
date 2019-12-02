@@ -27,7 +27,7 @@ export class UserService {
   login(name: string, pass: string): Observable<User> {
     console.log("name: " + name)
     console.log("pass: " + pass)
-    this.userNew = new User();
+    this.userNew = new User('', '', '', '', '', '', '', '', '', '', '', '', '', '');
     this.userNew.username = name;
 
     this.userNew.password = pass;

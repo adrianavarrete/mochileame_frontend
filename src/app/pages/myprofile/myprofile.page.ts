@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MyprofilePage implements OnInit, OnDestroy {
 
-  user = new User();
+  user = new User('','','','','','','','','','','','','','');
   idUser = localStorage.getItem('idUser');
 
   constructor(public userService: UserService, private router: Router, private route: ActivatedRoute) {
