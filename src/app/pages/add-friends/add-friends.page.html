@@ -24,7 +24,7 @@
               </ion-card-header>
               <ion-card-content>
                   <ion-list >
-                    <ion-item *ngFor="let user of users | filter:textSearch">
+                    <ion-item *ngFor="let user of users | filter:textSearch" (click)="goUserProfile(user.username)">
                       <ion-label>
                         <h4>
                           {{ user.username }}

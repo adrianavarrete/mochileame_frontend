@@ -20,6 +20,10 @@ export class UserService {
     return this.http.get<User>(this.URL_API + `/${_id}`);
   }
 
+   getUserByUsername(username: String): Observable<User> {
+    return this.http.get<User>(this.URL_API + `/username/${username}`);
+  }
+
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.URL_API);
   }
