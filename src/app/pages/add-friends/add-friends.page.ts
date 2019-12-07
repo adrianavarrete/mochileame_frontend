@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class AddFriendsPage implements OnInit {
   users: User[] = [];
   textSearch = '';
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.userService.getUsers()
       .subscribe(res => this.users = res);
   }
@@ -27,6 +28,13 @@ export class AddFriendsPage implements OnInit {
     this.textSearch = text;
 
     console.log(text);
+
+  }
+
+  goUserProfile(username: string) {
+
+    localStorage.setItem('usernameToFollow', username);
+    this.router.navigateByUrl('/profile');
 
   }
 

@@ -44,13 +44,15 @@ const routes: Routes = [
   {
     path: 'add-friends',
     loadChildren: () => import('./pages/add-friends/add-friends.module').then( m => m.AddFriendsPageModule)
-  },  {
-    path: 'grupo-detail',
-    loadChildren: () => import('./pages/grupo-detail/grupo-detail.module').then( m => m.GrupoDetailPageModule)
-  }
-
-
-
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+{
+  path: 'grupo-detail',
+  loadChildren: () => import('./pages/grupo-detail/grupo-detail.module').then( m => m.GrupoDetailPageModule)
+}
   /////////////////
 
 ];

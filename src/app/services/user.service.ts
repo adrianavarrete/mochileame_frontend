@@ -20,6 +20,10 @@ export class UserService {
     return this.http.get<User>(this.URL_API + `/${_id}`);
   }
 
+   getUserByUsername(username: String): Observable<User> {
+    return this.http.get<User>(this.URL_API + `/username/${username}`);
+  }
+
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.URL_API);
   }
@@ -27,7 +31,7 @@ export class UserService {
   login(name: string, pass: string): Observable<User> {
     console.log("name: " + name)
     console.log("pass: " + pass)
-    this.userNew = new User();
+    this.userNew = new User('', '', '', '', '', '', '', '', '', '', '', '', '', '');
     this.userNew.username = name;
 
     this.userNew.password = pass;
