@@ -12,8 +12,6 @@ export class TravelGroup {
     createdBy: string;
     dateOfCreation: Date;
 
-    //------------- Comento los atributos que a día de hoy no son requeridos en mongoose ---------------//
-
     constructor(
         _id = '',
         name = '',

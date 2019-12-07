@@ -38,12 +38,30 @@ const routes: Routes = [
     loadChildren: () => import('./pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
   },
   {
-    path: 'creargrupo',
-    loadChildren: () => import('./pages/creargrupo/creargrupo.module').then( m => m.CreargrupoPageModule)
-  }
+    path: 'friends',
+    loadChildren: () => import('./pages/friends/friends.module').then( m => m.FriendsPageModule)
+  },
+  {
+    path: 'add-friends',
+    loadChildren: () => import('./pages/add-friends/add-friends.module').then( m => m.AddFriendsPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+{
+  path: 'grupo-detail',
+  loadChildren: () => import('./pages/grupo-detail/grupo-detail.module').then( m => m.GrupoDetailPageModule)
+},
 
+{
 
-
+      path: 'creargrupo',
+      loadChildren: () => import('./pages/creargrupo/creargrupo.module').then( m => m.CreargrupoPageModule)
+    }
+  
+  
+  
   /////////////////
 
 ];

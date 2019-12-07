@@ -14,7 +14,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ProfileDetailsPage implements OnInit {
 
-  user = new User();
+  user = new User('','','','','','','','','','','','','','');
   idUser = localStorage.getItem("idUser");
 
   name: any;

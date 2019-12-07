@@ -12,14 +12,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MyprofilePage implements OnInit, OnDestroy {
 
-  user = new User();
+  user = new User('', '', '', '', '', '', '', '', '', '', '', '', '', '');
   idUser = localStorage.getItem('idUser');
 
   constructor(public userService: UserService, private router: Router, private route: ActivatedRoute) {
-      route.params.subscribe(val => { // necesario para poder volver a ejecutar ngoninit al volver de otra pagina
+    route.params.subscribe(val => { // necesario para poder volver a ejecutar ngoninit al volver de otra pagina
       this.getUser(this.idUser);
     });
-   }
+  }
 
   ngOnInit() {
     this.getUser(this.idUser);
@@ -51,6 +51,11 @@ export class MyprofilePage implements OnInit, OnDestroy {
   goProfile() {
     this.router.navigateByUrl('/profile-details');
   }
+
+  goFriends() {
+    this.router.navigateByUrl('/friends');
+  }
+
 
   logout() {
     localStorage.removeItem("idUser");
