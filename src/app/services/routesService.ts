@@ -28,4 +28,11 @@ export class routesService {
         return this.http.put(this.URL_API + '/travelAddUser' + `/${id}`, travelGroup)
     }
 
+
+    creargrupo(travelgrup: TravelGroup): Observable<TravelGroup>{
+
+        return this.http.post<TravelGroup>(this.URL_API + '/travelgroup', travelgrup);
+   
+
+}
 }

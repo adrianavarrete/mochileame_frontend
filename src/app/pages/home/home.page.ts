@@ -5,6 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { element } from 'protractor';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { NgForm } from '@angular/forms';
+import { Router } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
+
+
+
+
 //import {MisGruposPage} from '../mis-grupos/mis-grupos.page'
 
 @Component({
@@ -15,14 +21,14 @@ import { NgForm } from '@angular/forms';
 export class HomePage implements OnInit {
 
 
-  constructor(private service: routesService) { }
+  constructor(private service: routesService, private route: ActivatedRoute,  private router: Router) { }
   //private misGrupos: MisGruposPage
  
   existe: Boolean;
   token: string = localStorage.getItem('idUser');
   id: string;
   travelGroup : TravelGroup;
-  protected listaTravelGroups: TravelGroup[] = [];
+  listaTravelGroups: TravelGroup[] = [];
   addInTravelGroup: TravelGroup;
   addUSerAddInTheGroup: TravelGroup;
 
@@ -31,6 +37,11 @@ export class HomePage implements OnInit {
     this.id = localStorage.getItem('idUser');
     this.getListaTravelGroups();
   }
+  
+  goCreargrupo() {
+    this.router.navigateByUrl('/creargrupo');
+  }
+
 
   addUserInGroup(addUserTravelGroup : TravelGroup)
   {

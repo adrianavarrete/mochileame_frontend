@@ -3,7 +3,7 @@ export class TravelGroup {
     name: string;
     destination: string;
     maxNumUsers: number;
-    users: [string];
+    users: string [];
     privacity: boolean;
     travelDateInit: Date;
     travelDateFin: Date;
@@ -19,7 +19,7 @@ export class TravelGroup {
         name = '',
         destination = '',
         maxNumUsers = null,
-        users = null,
+        users =  [],
         privacity = false,
         travelDateInit = null,
         travelDateFin = null,

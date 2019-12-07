@@ -19,22 +19,38 @@ const routes: Routes = [
   },
 
   ////////////////////////intento
-  {
+{
     path: 'login',
     loadChildren: () => import('./pages/loguin/loguin.module').then(m => m.LoguinPageModule)
 
-  },
+},
+ 
   {
     path: 'mis-grupos',
     loadChildren: () => import('./pages/mis-grupos/mis-grupos.module').then( m => m.MisGruposPageModule)
   },
   {
+    path: 'myprofile',
+    loadChildren: () => import('./pages/myprofile/myprofile.module').then( m => m.MyprofilePageModule)
+  },
+  {
     path: 'sign-up',
     loadChildren: () => import('./pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
+  },
+  {
+    path: 'creargrupo',
+    loadChildren: () => import('./pages/creargrupo/creargrupo.module').then( m => m.CreargrupoPageModule)
   }
+
+
+
   /////////////////
 
 ];
+
+
+
+
 
 @NgModule({
   imports: [
