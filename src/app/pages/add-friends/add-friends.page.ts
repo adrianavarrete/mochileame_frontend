@@ -14,6 +14,7 @@ export class AddFriendsPage implements OnInit {
 
   users: User[] = [];
   textSearch = '';
+  idUser: string;
 
   constructor(private userService: UserService, private router: Router) {
     this.userService.getUsers()
@@ -21,6 +22,8 @@ export class AddFriendsPage implements OnInit {
   }
 
   ngOnInit() {
+    this.idUser = localStorage.getItem('idUser');
+
   }
 
   findUser(event) {
