@@ -22,7 +22,11 @@ export class UserService {
     return this.http.get<User>(this.URL_API + `/${_id}`);
   }
 
-   getUserByUsername(username: String): Observable<User> {
+  getFriends(_id: String): Observable<User> {
+    return this.http.get<User>(this.URL_API + `/${_id}/friends`);
+  }
+
+  getUserByUsername(username: String): Observable<User> {
     return this.http.get<User>(this.URL_API + `/username/${username}`);
   }
 
@@ -48,9 +52,9 @@ export class UserService {
     console.log(user);
     return this.http.post<User>(this.URL_API + '/postuser/', user);
   }
-  
-    
-  }
+
+
+}
 
 
 

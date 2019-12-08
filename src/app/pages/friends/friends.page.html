@@ -4,10 +4,10 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-        <ion-button (click)="goAddFriends()">
-          <ion-icon slot="icon-only" name="add"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+      <ion-button (click)="goAddFriends()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title text-center>
       Mochileame
     </ion-title>
@@ -20,10 +20,21 @@
         <ion-col size-md="6" offset-md="3">
           <ion-card>
             <ion-card-header>
-              <ion-card-title>Seguidos</ion-card-title>
+              <ion-card-title>Seguidos: {{followings.length}}</ion-card-title>
             </ion-card-header>
             <ion-card-content>
-                No sigues a nadie aún :(
+              <ion-list *ngFor="let user of followings">
+                <div *ngIf="followings.length != 0; else me">
+                  <ion-item>
+                    <ion-label (click)="goUserProfile(user.username)">
+                      <h4>
+                        {{ user.username }}
+                      </h4>
+                    </ion-label>
+                  </ion-item>
+                </div>
+                <ng-template #me>No sigues a nadie aún :(</ng-template>
+              </ion-list>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -32,10 +43,23 @@
         <ion-col size-md="6" offset-md="3">
           <ion-card>
             <ion-card-header>
-              <ion-card-title>Seguidores</ion-card-title>
+              <ion-card-title>Seguidores: {{followers.length}}</ion-card-title>
             </ion-card-header>
             <ion-card-content>
-              No tienes seguidores aún :(
+              <ion-list *ngFor="let user of followers">
+                <div *ngIf="followers.length != 0; else me">
+                  <ion-item>
+                    <ion-label (click)="goUserProfile(user.username)">
+                      <h4>
+                        {{ user.username }}
+                      </h4>
+                    </ion-label>
+                  </ion-item>
+                </div>
+                <ng-template #me>No tienes seguidores aún :(</ng-template>
+
+
+              </ion-list>
             </ion-card-content>
           </ion-card>
         </ion-col>
