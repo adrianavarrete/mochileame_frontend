@@ -11,11 +11,15 @@ import {TravelGroup} from '../../models/travel-group';
 })
 export class GrupoDetailPage implements OnInit {
 
+  id: String;
   groupActual : TravelGroup;
+  delUserInTravelGroup: TravelGroup;
 
   constructor(private service: routesService) { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    this.id = localStorage.getItem('idUser');
   }
 
 getTravelGroup()
@@ -32,4 +36,34 @@ getTravelGroup()
 }
 );
 }
+
+addUserInGroup(addUserTravelGroup: TravelGroup) {
+
+  this.delUserInTravelGroup = new TravelGroup();
+
+  this.groupActual.users.forEach(stringUser => {
+
+    if (this.id == stringUser)
+   {
+    
+   }
+
+  })
+
+  // this.service.addUserInGroup(this.addUSerAddInTheGroup, this.groupActual._id)
+  //   .subscribe((res) => {
+
+  //     console.log(res);
+  //     this.getListaTravelGroups();
+  //     // this.misGrupos.getListaTravelGroups();
+
+  //   }), ((error) => {
+  //     console.log(error);
+  //   });
+
+
+
+}
+
+
 }

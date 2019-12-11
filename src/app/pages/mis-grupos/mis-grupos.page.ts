@@ -44,7 +44,7 @@ export class MisGruposPage implements OnInit {
   filterFunction(form: NgForm)
  {
   this.listaTravelGroupsFilter = [];
-  this.listaTravelGroups = [];
+ 
 
   if (form.value.name == "" || form.value.name == null || form.value.name == undefined)
   {

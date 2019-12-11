@@ -31,11 +31,15 @@ export class HomePage implements OnInit {
   listaTravelGroups: TravelGroup[] = [];
   addInTravelGroup: TravelGroup;
   addUSerAddInTheGroup: TravelGroup;
+  show: Boolean;
+  listaTravelGroupsBackup: TravelGroup[] = [];
+  listaTravelGroupsFilter: TravelGroup[] = [];
 
 
   ngOnInit() {
     this.id = localStorage.getItem('idUser');
     this.getListaTravelGroups();
+    this.listaTravelGroupsBackup = this.listaTravelGroups;
   }
   
   goCreargrupo() {
@@ -98,6 +102,74 @@ export class HomePage implements OnInit {
       });
   }
 
+
+  showFunc(){
+    if (this.show == true){ this.show = false;}
+    else {this.show = true;}
+  }
+
+  filterFunction(form: NgForm)
+  {
+   this.listaTravelGroupsFilter = [];
+
+   if (form.value.name == "" || form.value.name == null || form.value.name == undefined)
+   {
+     form.value.name = "";
+   }
+   if (form.value.destination == "" || form.value.destination == null || form.value.destination == undefined)
+   {
+     form.value.destination = "";
+   }
+   if (form.value.gender == "" || form.value.gender == null || form.value.gender == undefined)
+   {
+     form.value.gender = "";
+   }
+   if (form.value.hobbies == "" || form.value.hobbies == null || form.value.hobbies == undefined)
+   {
+     form.value.hobbies = "";
+   }
+ 
+  if (form.value.name == "" && form.value.destination == "" && form.value.gender == "" && form.value.hobbies == "")
+  {
+ this.listaTravelGroups = this.listaTravelGroupsBackup;
+  }  
+ 
+   else{
+     this.listaTravelGroups.forEach(travel => {
+             
+       if (form.value.name != null && form.value.name == travel.name)
+       {
+         this.listaTravelGroupsFilter.push(travel);
+       }
+ 
+       if (form.value.destination != null && form.value.destination == travel.destination)
+       {
+         this.listaTravelGroupsFilter.push(travel);
+       }
+ 
+       if (form.value.gender != null && form.value.gender == travel.gender)
+       {
+         this.listaTravelGroupsFilter.push(travel);
+       }
+ 
+       if (form.value.hobbies != null && form.value.hobbies == travel.hobbies)
+       {
+         this.listaTravelGroupsFilter.push(travel);
+       }
+   })
+ 
+   this.listaTravelGroups = this.listaTravelGroupsFilter;
+ 
+ 
+   }
+   this.showFunc();
+  }
+ 
+  goToDetail(travelGroup: TravelGroup)
+  {
+    localStorage.setItem("idTravelGroup", travelGroup._id);
+    this.router.navigateByUrl('/grupo-detail');
+  }
 
 
 }
