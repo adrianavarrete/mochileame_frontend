@@ -14,12 +14,15 @@ export class GrupoDetailPage implements OnInit {
   id: String;
   groupActual : TravelGroup;
   delUserInTravelGroup: TravelGroup;
+  show: Boolean;
 
   constructor(private service: routesService) { }
 
   ngOnInit() 
   {
     this.id = localStorage.getItem('idUser');
+    this.getTravelGroup();
+    this.findUserInTravel();
   }
 
 getTravelGroup()
@@ -43,27 +46,45 @@ addUserInGroup(addUserTravelGroup: TravelGroup) {
 
   this.groupActual.users.forEach(stringUser => {
 
-    if (this.id == stringUser)
+    if (this.id != stringUser)
    {
-    
+    this.delUserInTravelGroup.users.push(stringUser);
    }
 
-  })
+  });
 
-  // this.service.addUserInGroup(this.addUSerAddInTheGroup, this.groupActual._id)
-  //   .subscribe((res) => {
+  this.service.delUserInGroup(this.delUserInTravelGroup, this.groupActual._id)
+    .subscribe((res) => {
 
-  //     console.log(res);
-  //     this.getListaTravelGroups();
-  //     // this.misGrupos.getListaTravelGroups();
-
-  //   }), ((error) => {
-  //     console.log(error);
-  //   });
+      console.log(res);
+      this.getTravelGroup();
+      this.show = false;;
+      
+    }), ((error) => {
+      console.log(error);
+    });
 
 
 
 }
 
+
+findUserInTravel()
+{
+  this.show = false;
+  this.groupActual.users.forEach(stringUser => {
+
+    if (this.id == stringUser)
+   {
+    this.show = true;
+   }
+
+  });
+}
+
+showFunc(){
+  if (this.show == true){ this.show = false;}
+  else {this.show = true;}
+}
 
 }

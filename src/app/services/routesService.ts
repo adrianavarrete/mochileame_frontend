@@ -28,6 +28,11 @@ export class routesService {
         return this.http.put(this.URL_API + '/travelAddUser' + `/${id}`, travelGroup)
     }
 
+    delUserInGroup(travelGroup : TravelGroup, id :string){
+
+        return this.http.put(this.URL_API + '/travelDelUser' + `/${id}`, travelGroup)
+    }
+
     getTravelGroup():Observable<TravelGroup>
     {   const id = localStorage.getItem('idTravelGroup');
         return this.http.get<TravelGroup>(this.URL_API + "/travelgroup" + `/${id}`);

@@ -31,7 +31,7 @@ export class MisGruposPage implements OnInit {
   ngOnInit() {
     this.id = localStorage.getItem('idUser');
     this.getListaTravelGroups();
-    this.show  = false;
+    this.show  = true;
     this.listaTravelGroupsBackup = this.listaTravelGroups;
   }
 

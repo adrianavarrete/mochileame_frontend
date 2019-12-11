@@ -40,6 +40,7 @@ export class HomePage implements OnInit {
     this.id = localStorage.getItem('idUser');
     this.getListaTravelGroups();
     this.listaTravelGroupsBackup = this.listaTravelGroups;
+    this.show = true;
   }
   
   goCreargrupo() {
