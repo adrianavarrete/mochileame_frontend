@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {routesService} from '../../services/routesService';
 import {TravelGroup} from '../../models/travel-group';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
+import { NgForm } from '@angular/forms';
  
- 
-  
 @Component({
   selector: 'app-grupo-detail',
   templateUrl: './grupo-detail.page.html',
@@ -11,36 +12,104 @@ import {TravelGroup} from '../../models/travel-group';
 })
 export class GrupoDetailPage implements OnInit {
  
-  id: String;
+  id: string;
+  iduser: string;
   groupActual : TravelGroup = new TravelGroup;
   delUserInTravelGroup: TravelGroup;
   show: Boolean;
+  name : string;
+  user : User = new User;
+  userCreador : User = new User;
+  lista : string[] = [];
+  dateFinDate: string [] = [];
+  dateFin: string = "";
+  dateIn: string = "";
+  dateInDate: string[] = [];
+  listaUsuariosDentro: User [] = [];
+  constructor(private userService: UserService, private service: routesService) { }
  
-  constructor(private service: routesService) { }
- 
-  ngOnInit() 
+ async ngOnInit() 
   {
+    
     this.id = localStorage.getItem('idUser');
-    this.getTravelGroup();
-    this.findUserInTravel();
+    await this.getTravelGroup();
+    this.getUser(this.id); 
+    this.iduser = this.groupActual.createdBy
+    //this.findUserInTravel();
+    this.lista = this.groupActual.users;
+
+   
   }
  
-getTravelGroup()
+arreglarFechas(dateFin2: Date, dateIn2: Date)
+{
+ this.dateFinDate = dateFin2.toString().split('T');
+ this.dateFin = this.dateFinDate[0];
+ this.dateInDate = dateIn2.toString().split('T');
+ this.dateIn = this.dateInDate[0];
+}
+
+async getTravelGroup()
 {
  
-  this.service.getTravelGroup()
+  await this.service.getTravelGroup()
     .subscribe((res) => {
  
       this.groupActual = res;
-      localStorage.setItem("idTravelGroup", "");
+      this.arreglarFechas(this.groupActual.travelDateFin, this.groupActual.travelDateInit);
+      this.getUserCreador(this.groupActual.createdBy);
+      this.listaUsuariosDentro = [];
+      this.getListaUsuariosDentro();
+      this.findUserInTravel();
+
+      //localStorage.setItem("idTravelGroup", "");
  
 },(error) => {
   console.log("Ha habido un problema recuperando el grupo");
 }
 );
 }
+
+getListaUsuariosDentro()
+{
+  this.groupActual.users.forEach(stringUser => {
  
-addUserInGroup(addUserTravelGroup: TravelGroup) {
+    this.AddUserToActualUsersList(stringUser);
+   
+  });
+}
+getUserCreador(id: string) {
+  this.userService.getUsuario(id)
+    .subscribe(res => {
+      console.log(res);
+      this.userCreador = res;
+
+    });
+
+}
+
+getUser(id: string) {
+  this.userService.getUsuario(id)
+    .subscribe(res => {
+      console.log(res);
+      this.user = res;
+
+    });
+
+}
+ 
+AddUserToActualUsersList(id: string) {
+  this.userService.getUsuario(id)
+    .subscribe(res => {
+      console.log(res);
+      this.listaUsuariosDentro.push(res);
+
+    });
+
+}
+
+
+DelUserGroup() {
  
   this.delUserInTravelGroup = new TravelGroup();
  
@@ -50,20 +119,18 @@ addUserInGroup(addUserTravelGroup: TravelGroup) {
    {
     this.delUserInTravelGroup.users.push(stringUser);
    }
- 
+
   });
- 
+
   this.service.delUserInGroup(this.delUserInTravelGroup, this.groupActual._id)
     .subscribe((res) => {
  
       console.log(res);
       this.getTravelGroup();
-      this.show = false;;
       
     }), ((error) => {
       console.log(error);
     });
- 
  
  
 }
@@ -71,12 +138,12 @@ addUserInGroup(addUserTravelGroup: TravelGroup) {
  
 findUserInTravel()
 {
-  this.show = false;
+  this.show = true;
   this.groupActual.users.forEach(stringUser => {
  
     if (this.id == stringUser)
    {
-    this.show = true;
+    this.show = false;
    }
  
   });
@@ -87,4 +154,8 @@ showFunc(){
   else {this.show = true;}
 }
  
+
+
+
+
 }

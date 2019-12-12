@@ -8,31 +8,62 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
+
 <ion-content>
-  
-
-    <ion-row>
-        <ion-col size-md="6" offset-md="3">
-          <!-- <div class="ion-padding"> -->
-              <ion-card-header>
-                  <ion-card-title>{{groupActual.name}}</ion-card-title>
-                  <ion-card-subtitle>{{groupActual.destination}}</ion-card-subtitle>
-                </ion-card-header>
-
-               
-           
-                  
-                    <ion-label position="floating">LISTA USUARIOS</ion-label>
-                    <div *ngFor="let user of listausarios">
-                      <td>{{user.name}}</td>
-                                                                      
-                    </div>
-                  
+  <ion-grid fixed>
+    <form #grupoForm="ngForm" (ngSumbit)="creargrupo(grupoForm)">
+      <ion-row>
+        <ion-col size-md="9" offset-md="2">
+          <ion-card>
+            <ion-card-header>
+                <ion-title text-center>
+                    BIENVENIDOS
             
-       
-          </ion-col>
-      </ion-row> 
-     
-  
-</ion-content>
+                  </ion-title>
+                            
+                <ion-card-title> {{groupActual.name}}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-card-subtitle> ¡¡Vamos a {{groupActual.destination}}!!</ion-card-subtitle>
+                <ion-card-subtitle> Grupo creado por:  {{userCreador.username}}</ion-card-subtitle>
+                <ion-card-subtitle>Fecha inicio del viaje: {{dateFin}}</ion-card-subtitle>
+                <ion-card-subtitle>Fecha aproximada del fin: {{dateIn}}</ion-card-subtitle>
+                <ion-card-subtitle>Hobbies del grupo: {{groupActual.hobbies}}</ion-card-subtitle>              
+              
 
+            
+          
+              
+                               
+                
+                  <ion-label position="floating">LISTA PARTICIPANTES</ion-label>
+                  <div *ngFor="let user of listaUsuariosDentro">
+                    <td>{{user.username}}</td>
+                                                                    
+                  </div>
+                 
+
+                  <form #form="ngForm" (ngSubmit)="DelUserGroup()" method="post">
+                <ion-card [hidden]=show>
+                          <ion-button type="submit" expand="full">Salir del grupo</ion-button>                       
+              
+                          </ion-card>
+                    </form>
+             
+          
+            </ion-card-content>
+
+            
+          </ion-card>
+
+
+        </ion-col>
+      </ion-row>
+
+
+     
+    </form>
+    
+  </ion-grid>
+</ion-content>
