@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {routesService} from '../../services/routesService';
 import {TravelGroup} from '../../models/travel-group';
- 
- 
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
+import { NgForm } from '@angular/forms';
  
 @Component({
   selector: 'app-grupo-detail',
@@ -11,18 +12,27 @@ import {TravelGroup} from '../../models/travel-group';
 })
 export class GrupoDetailPage implements OnInit {
  
-  id: String;
-  groupActual : TravelGroup;
+  id: string;
+  iduser: string;
+  groupActual : TravelGroup = new TravelGroup;
   delUserInTravelGroup: TravelGroup;
   show: Boolean;
- 
-  constructor(private service: routesService) { }
+  name : string;
+  user : User = new User;
+  lista : string[] = [];
+  
+  constructor(private userService: UserService, private service: routesService) { }
  
   ngOnInit() 
   {
+    
     this.id = localStorage.getItem('idUser');
     this.getTravelGroup();
+    this.iduser = this.groupActual.createdBy
     this.findUserInTravel();
+    this.getUser(this.iduser); 
+    this.lista = this.groupActual.users;
+   
   }
  
 getTravelGroup()
@@ -39,7 +49,19 @@ getTravelGroup()
 }
 );
 }
+
+getUser(iduser: string) {
+  this.userService.getUsuario(iduser)
+    .subscribe(res => {
+      console.log(res);
+      this.user = res;
+
+    });
+
+}
  
+
+
 addUserInGroup(addUserTravelGroup: TravelGroup) {
  
   this.delUserInTravelGroup = new TravelGroup();
@@ -52,6 +74,10 @@ addUserInGroup(addUserTravelGroup: TravelGroup) {
    }
  
   });
+
+
+
+  
  
   this.service.delUserInGroup(this.delUserInTravelGroup, this.groupActual._id)
     .subscribe((res) => {
@@ -87,4 +113,8 @@ showFunc(){
   else {this.show = true;}
 }
  
+
+
+
+
 }
