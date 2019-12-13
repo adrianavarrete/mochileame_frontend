@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, Validators, FormControl, FormGroup } from "@angular/forms";
-import { Toast } from "@ionic-native/toast";
+
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { ToastController } from '@ionic/angular';

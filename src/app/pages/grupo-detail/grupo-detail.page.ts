@@ -32,7 +32,7 @@ export class GrupoDetailPage implements OnInit {
  
  async ngOnInit() 
   {
-    this.getTravelGrou2();
+  
     this.id = localStorage.getItem('idUser');
     await this.getTravelGroup();
     this.getUser(this.id); 
@@ -160,30 +160,30 @@ showFunc(){
 }
  
 
-async getTravelGrou2()
-{
+
+
+// async getTravelGrou2()
+// {
   
- let promesa = await new Promise(function(resolve, reject) {
+//  let promesa = await new Promise(function(resolve, reject) {
    
-    this.service.getTravelGroup()
-    .subscribe((res) => {
+//     this.service.getTravelGroup()
+//     .subscribe((res) => {
       
-    resolve (res)
-      },(error) => {
-      console.log("Ha habido un problema recuperando el grupo");
-      return error;
-      resolve(error);
-  ;
-}
-);
+//     resolve (res)
+//       },(error) => {
+//       console.log("Ha habido un problema recuperando el grupo");
+//       return error;
+//       resolve(error);
+//   ;
+// }
+// );
  
-  });
+//   });
 
-  return promesa;
+//   return promesa;
   
-}
-
-
+// }
 
 
 }
