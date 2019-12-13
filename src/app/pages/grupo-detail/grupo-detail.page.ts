@@ -4,6 +4,7 @@ import {TravelGroup} from '../../models/travel-group';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { NgForm } from '@angular/forms';
+import { stringify } from 'querystring';
  
 @Component({
   selector: 'app-grupo-detail',
@@ -27,10 +28,11 @@ export class GrupoDetailPage implements OnInit {
   dateInDate: string[] = [];
   listaUsuariosDentro: User [] = [];
   constructor(private userService: UserService, private service: routesService) { }
+  aa: TravelGroup;
  
  async ngOnInit() 
   {
-    
+    this.getTravelGrou2();
     this.id = localStorage.getItem('idUser');
     await this.getTravelGroup();
     this.getUser(this.id); 
@@ -38,7 +40,7 @@ export class GrupoDetailPage implements OnInit {
     //this.findUserInTravel();
     this.lista = this.groupActual.users;
 
-   
+
   }
  
 arreglarFechas(dateFin2: Date, dateIn2: Date)
@@ -49,7 +51,7 @@ arreglarFechas(dateFin2: Date, dateIn2: Date)
  this.dateIn = this.dateInDate[0];
 }
 
-async getTravelGroup()
+async  getTravelGroup()
 {
  
   await this.service.getTravelGroup()
@@ -61,6 +63,7 @@ async getTravelGroup()
       this.listaUsuariosDentro = [];
       this.getListaUsuariosDentro();
       this.findUserInTravel();
+      
 
       //localStorage.setItem("idTravelGroup", "");
  
@@ -69,6 +72,8 @@ async getTravelGroup()
 }
 );
 }
+
+
 
 getListaUsuariosDentro()
 {
@@ -154,6 +159,29 @@ showFunc(){
   else {this.show = true;}
 }
  
+
+async getTravelGrou2()
+{
+  
+ let promesa = await new Promise(function(resolve, reject) {
+   
+    this.service.getTravelGroup()
+    .subscribe((res) => {
+      
+    resolve (res)
+      },(error) => {
+      console.log("Ha habido un problema recuperando el grupo");
+      return error;
+      resolve(error);
+  ;
+}
+);
+ 
+  });
+
+  return promesa;
+  
+}
 
 
 
