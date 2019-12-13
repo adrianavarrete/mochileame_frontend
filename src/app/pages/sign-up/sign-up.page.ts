@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from "@angular/forms";
+import { NgForm, Validators, FormControl, FormGroup } from "@angular/forms";
+import { Toast } from "@ionic-native/toast";
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import { ToastController } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-sign-up',
@@ -9,12 +13,22 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./sign-up.page.scss'],
 })
 export class SignUpPage implements OnInit {
-
+  
+  form: FormGroup;
   user = new User();
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) { 
+    this.form = new FormGroup({
+      mail: new FormControl('', Validators.pattern(".+\@.+\..+")),
+      username: new FormControl('', Validators.required),
+      pass: new FormControl('',Validators.required),
+      pass2: new FormControl('', Validators.required)
+
+    });
+
+  }
 
   ngOnInit() {
-  }
+    }
 
   registerUser(form: NgForm){
 
@@ -26,13 +40,14 @@ export class SignUpPage implements OnInit {
     if(pass2 == this.user.password){
       console.log(this.user);
       this.userService.register(this.user)      
-      .subscribe(res=> {        
+      .subscribe(res=> { 
         console.log(res);
         localStorage.setItem("idUser", res._id);
         this.resetForm(form);
       });
     }
     else{
+      alert("Las contraseñas no coinciden!")
       this.resetForm(form);
     }    
   }
@@ -42,5 +57,4 @@ export class SignUpPage implements OnInit {
       form.reset();
     }
   }
-
 }

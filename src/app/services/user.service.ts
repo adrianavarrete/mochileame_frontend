@@ -29,14 +29,14 @@ export class UserService {
     this.userNew.password = pass;
     return this.http.post<User>(this.URL_API+ '/login', this.userNew);
   }
-  updateUser(user: User) {
+  updateUser(user: User):Observable<User> {
     console.log(user);
-    return this.http.put(this.URL_API + `/updateUser/${user._id}`, user);
+    return this.http.put<User>(this.URL_API + `/updateUser/${user._id}`, user);
   }
 
-  register(user: User) {
+  register(user: User):Observable<User>{
     console.log(user);
-    return this.http.post(this.URL_API + '/postuser/', user);
+    return this.http.post<User>(this.URL_API + '/postuser/', user);
   }
 }
 
