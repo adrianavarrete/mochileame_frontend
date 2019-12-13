@@ -3,7 +3,7 @@ export class TravelGroup {
     name: string;
     destination: string;
     maxNumUsers: number;
-    users: [string];
+    users: string [];
     privacity: boolean;
     travelDateInit: Date;
     travelDateFin: Date;
@@ -12,14 +12,12 @@ export class TravelGroup {
     createdBy: string;
     dateOfCreation: Date;
 
-    //------------- Comento los atributos que a día de hoy no son requeridos en mongoose ---------------//
-
     constructor(
         _id = '',
         name = '',
         destination = '',
         maxNumUsers = null,
-        users = null,
+        users =  [],
         privacity = false,
         travelDateInit = null,
         travelDateFin = null,

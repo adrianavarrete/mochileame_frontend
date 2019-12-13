@@ -11,7 +11,8 @@ export class User {
     photo: string;
     biography: string;
     hobbies: [string];
-    friends: [string];
+    followers: [string];
+    following: [string];
 
     //------------- Comento los atributos que a día de hoy no son requeridos en mongoose ---------------//
 
@@ -20,30 +21,33 @@ export class User {
         username = '',
         mail = '',
         password = '',
-        //name= '',
-        //lastname= '',
-        //dateofbirth= null,
-        //gender= '',
-        //nationality= '',
-        //photo= '',
-        // biography= '',
-        //hobbies= null,
-        //friends= null
+        name = '',
+        lastname = '',
+        dateofbirth = null,
+        gender = '',
+        nationality = '',
+        photo = '',
+        biography = '',
+        hobbies = null,
+        followers= null,
+        following= null
+
     ) {
 
         this._id = _id;
         this.username = username;
         this.mail = mail;
         this.password = password;
-        //this.name = name;
-        //this.lastname = lastname;
-        //this.dateofbirth = dateofbirth;
-        //this.gender = gender;
-        //this.nationality = nationality;
-        //this.photo = photo;
-        //this.biography = biography;
-        //this.hobbies = hobbies;
-        //this.friends = friends;
+        this.name = name;
+        this.lastname = lastname;
+        this.dateofbirth = dateofbirth;
+        this.gender = gender;
+        this.nationality = nationality;
+        this.photo = photo;
+        this.biography = biography;
+        this.hobbies = hobbies;
+        this.followers = followers;
+        this.following = following;
 
     }
 }

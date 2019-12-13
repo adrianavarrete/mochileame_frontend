@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ProfileDetailsPage } from './pages/profile-details/profile-details.page';
-import {LoguinPage} from './pages/loguin/loguin.page';
+import { LoguinPage } from './pages/loguin/loguin.page';
 
 const routes: Routes = [
   //{ path: '', redirectTo: 'tabs', pathMatch: 'full' },
@@ -11,11 +11,11 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+    loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
 
   ////////////////////////intento
@@ -24,17 +24,51 @@ const routes: Routes = [
     loadChildren: () => import('./pages/loguin/loguin.module').then(m => m.LoguinPageModule)
 
   },
+
   {
     path: 'mis-grupos',
-    loadChildren: () => import('./pages/mis-grupos/mis-grupos.module').then( m => m.MisGruposPageModule)
+    loadChildren: () => import('./pages/mis-grupos/mis-grupos.module').then(m => m.MisGruposPageModule)
+  },
+  {
+    path: 'myprofile',
+    loadChildren: () => import('./pages/myprofile/myprofile.module').then(m => m.MyprofilePageModule)
   },
   {
     path: 'sign-up',
-    loadChildren: () => import('./pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
+    loadChildren: () => import('./pages/sign-up/sign-up.module').then(m => m.SignUpPageModule)
+  },
+  {
+    path: 'friends',
+    loadChildren: () => import('./pages/friends/friends.module').then(m => m.FriendsPageModule)
+  },
+  {
+    path: 'add-friends',
+    loadChildren: () => import('./pages/add-friends/add-friends.module').then(m => m.AddFriendsPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfilePageModule)
+  },
+  {
+    path: 'grupo-detail',
+    loadChildren: () => import('./pages/grupo-detail/grupo-detail.module').then(m => m.GrupoDetailPageModule)
+  },
+
+  {
+
+    path: 'creargrupo',
+    loadChildren: () => import('./pages/creargrupo/creargrupo.module').then(m => m.CreargrupoPageModule)
   }
+
+
+
   /////////////////
 
 ];
+
+
+
+
 
 @NgModule({
   imports: [

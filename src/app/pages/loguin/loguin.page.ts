@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {routesService} from '../../services/routesService';
+import { routesService } from '../../services/routesService';
 import { HttpClientModule } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -18,33 +20,47 @@ import { UserService } from 'src/app/services/user.service';
 export class LoguinPage implements OnInit {
 
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
+    // route.params.subscribe(val => { // necesario para poder volver a ejecutar ngoninit al volver de otra pagina
+    //   this.getUser(this.userLogin._id);
+    // });
+   }
   userLogin: User;
+
+
 
   ngOnInit() {
   }
 
-  login(form: NgForm){
+  login(form: NgForm) {
 
 
-      this.userService.login(form.value.username, form.value.password)
-      .subscribe((res) => {console.log(res)
-       
-        if ( res == null)
-         {
-       
-         }else if (res != null)
-         {
+    this.userService.login(form.value.username, form.value.password)
+      .subscribe((res) => {
+        console.log(res)
+
+        if (res == null) {
+
+        } else if (res != null) {
           this.userLogin = res;
-          
+          this.router.navigateByUrl("/tabs/tab1");
           localStorage.setItem("idUser", res._id);
+          this.router.navigateByUrl("/tabs/tab1");
+        }
+      });
+  }
 
-          
-           
-         }
-      })
-    
-    
+  goRegister() {
+    this.router.navigateByUrl('/sign-up');
+  }
+
+  getUser(idUser: string) {
+    this.userService.getUsuario(idUser)
+      .subscribe(res => {
+        console.log(res);
+        this.userLogin = res;
+
+      });
 
   }
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tabs',
@@ -7,7 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
+    route.params.subscribe(val => { // necesario para poder volver a ejecutar ngoninit al volver de otra pagina
+      this.getUser(localStorage.getItem('idUser'));
+    });
+  }
+
+  getUser(idUser: string) {
+    this.userService.getUsuario(idUser)
+      .subscribe(res => {
+        console.log(res);
+
+      });
+
+  }
+
+
 
   ngOnInit() {
   }

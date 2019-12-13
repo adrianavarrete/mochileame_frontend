@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>
+      Mochileame
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid fixed>
+    <form #grupoForm="ngForm" (ngSumbit)="creargrupo(grupoForm)">
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Datos del nuevo grupo </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Destino</ion-label>
+                <ion-input type="text" [(ngModel)]="destino" name="destino"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Maximo personas </ion-label>
+                <ion-input type="int" [(ngModel)]="max" name="max"></ion-input>
+              </ion-item>
+                         <ion-item>
+                <ion-label position="floating">Fecha de inicio</ion-label>
+                <ion-datetime display-format="DD.MM.YYYY" min="2019-12-15" max="2020-08-23" type="text" [(ngModel)]="fechainicio" name="fechainicio">
+                </ion-datetime>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Fecha Fin</ion-label>
+                <ion-datetime display-format="DD.MM.YYYY" min="2019-12-01" max="2022-08-23" type="text" [(ngModel)]="fechafin" name="fechafin">
+                </ion-datetime>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Genero</ion-label>
+                <ion-select multiple="false" placeholder="Selecciona un genero" type="text" [(ngModel)]="gender"
+                  name="gender">
+                  <ion-select-option value="Masculino">Masculino</ion-select-option>
+                  <ion-select-option value="Femenino">Femenino</ion-select-option>
+                  <ion-select-option value="Indiferente">Indiferente</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-card-content>
+
+            
+            <ion-button type="submit" expand="full" (click)="creargrupo(grupoForm)">
+            Crear grupo</ion-button>
+          </ion-card>
+
+
+        </ion-col>
+      </ion-row>
+
+
+     
+    </form>
+    
+  </ion-grid>
+</ion-content>
