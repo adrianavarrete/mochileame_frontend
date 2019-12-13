@@ -34,6 +34,10 @@ export class HomePage implements OnInit {
   show: Boolean;
   listaTravelGroupsBackup: TravelGroup[] = [];
   listaTravelGroupsFilter: TravelGroup[] = [];
+  name: any;
+  destination: any;
+  gender: any;
+  hobbies: any;
 
 
   ngOnInit() {
