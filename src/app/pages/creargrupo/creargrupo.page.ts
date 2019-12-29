@@ -22,6 +22,14 @@ export class CreargrupoPage implements OnInit {
   listaUserGroup: [] = [];
   borradorDeGrupo = new TravelGroup();
 
+  name: any;
+  destino:any;
+  max: any;
+  fechainicio: any;
+  fechafin: any;
+  gender: any;
+
+
 
  
   constructor( public userService: UserService, public routesService: routesService, private router: Router) { }

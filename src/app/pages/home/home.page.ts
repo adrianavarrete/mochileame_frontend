@@ -34,6 +34,10 @@ export class HomePage implements OnInit {
   show: Boolean;
   listaTravelGroupsBackup: TravelGroup[] = [];
   listaTravelGroupsFilter: TravelGroup[] = [];
+  name: any;
+  destination: any;
+  gender: any;
+  hobbies: any;
 
 
   ngOnInit() {
@@ -172,5 +176,9 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('/grupo-detail');
   }
 
-
+  ionViewWillEnter(){
+    console.log("tab1");
+  }
 }
+
+

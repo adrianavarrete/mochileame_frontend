@@ -13,5 +13,8 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
   }
 
+ionViewWillEnter(){
+  console.log("tab1");
+}
 
 }
