@@ -57,8 +57,10 @@ export class SignUpPage implements OnInit {
       this.userService.register(this.user)
         .subscribe(res => {
           console.log(res);
-          localStorage.setItem("idUser", res['data']._id);
-          this.id = res['data']._id;
+
+          localStorage.setItem("idUser", res["data"]._id);
+          this.id = res["data"]._id;
+          localStorage.setItem("token", res['accessToken']);
           this.resetForm(form);
           localStorage.setItem("token", res['accessToken']);
           this.router.navigateByUrl("/profile-details");

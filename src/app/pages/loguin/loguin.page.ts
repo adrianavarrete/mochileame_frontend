@@ -39,13 +39,13 @@ export class LoguinPage implements OnInit {
       .subscribe((res) => {
         console.log(res)
 
-        if (res['data'] == null) {
-
-        } else if (res['data'] != null) {
-          // this.userLogin = res;
+        if (res == null) {
+          res['data']
+        } else if (res != null) {
+          //this.userLogin = res;
           localStorage.setItem("idUser", res['data']._id);
           localStorage.setItem("token", res['accessToken']);
-          this.router.navigateByUrl("/tabs/tab1");
+          this.router.navigateByUrl("/tabs/tab1"); //asereje ja deje escucfhimi escuchiti
         }
       });
   }

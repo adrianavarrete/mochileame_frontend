@@ -34,7 +34,7 @@ export class UserService {
     return this.http.get<User[]>(this.URL_API);
   }
 
-  login(name: string, pass: string)  {
+  login(name: string, pass: string){
     console.log("name: " + name)
     console.log("pass: " + pass)
     this.userNew = new User();

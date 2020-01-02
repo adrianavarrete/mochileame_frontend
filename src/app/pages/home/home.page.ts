@@ -176,5 +176,9 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('/grupo-detail');
   }
 
-
+  ionViewWillEnter(){
+    console.log("tab1");
+  }
 }
+
+
