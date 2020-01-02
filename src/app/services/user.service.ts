@@ -52,7 +52,12 @@ export class UserService {
     console.log(user);
     return this.http.post(this.URL_API + '/postuser/', user);
   }
+  delete(user : User ):Observable<User>{
 
+    return this.http.delete<User>(this.URL_API + `/deleteuser/${user._id}` )
+
+
+  }
 
 }
 

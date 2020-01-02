@@ -58,7 +58,12 @@ const routes: Routes = [
 
     path: 'creargrupo',
     loadChildren: () => import('./pages/creargrupo/creargrupo.module').then(m => m.CreargrupoPageModule)
+  },
+  {
+    path: 'consejos',
+    loadChildren: () => import('./pages/consejos/consejos.module').then( m => m.ConsejosPageModule)
   }
+
 
 
 
