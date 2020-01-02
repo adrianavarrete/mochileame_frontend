@@ -39,12 +39,12 @@ export class LoguinPage implements OnInit {
       .subscribe((res) => {
         console.log(res)
 
-        if (res == null) {
+        if (res['data'] == null) {
 
-        } else if (res != null) {
-          this.userLogin = res;
-          this.router.navigateByUrl("/tabs/tab1");
-          localStorage.setItem("idUser", res._id);
+        } else if (res['data'] != null) {
+          // this.userLogin = res;
+          localStorage.setItem("idUser", res['data']._id);
+          localStorage.setItem("token", res['accessToken']);
           this.router.navigateByUrl("/tabs/tab1");
         }
       });
