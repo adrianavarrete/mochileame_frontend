@@ -40,11 +40,11 @@ export class LoguinPage implements OnInit {
         console.log(res)
 
         if (res == null) {
-
+          res['data']
         } else if (res != null) {
-          this.userLogin = res;
-          this.router.navigateByUrl("/tabs/tab1");
-          localStorage.setItem("idUser", res._id);
+          //this.userLogin = res;
+          localStorage.setItem("idUser", res['data']._id);
+          localStorage.setItem("token", res['accessToken']);
           this.router.navigateByUrl("/tabs/tab1");
         }
       });
