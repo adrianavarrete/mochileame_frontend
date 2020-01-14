@@ -13,6 +13,7 @@ export class User {
     hobbies: [string];
     followers: [string];
     following: [string];
+    score: [number];
 
     //------------- Comento los atributos que a día de hoy no son requeridos en mongoose ---------------//
 
@@ -30,7 +31,8 @@ export class User {
         biography = '',
         hobbies = null,
         followers= null,
-        following= null
+        following= null,
+        score= null
 
     ) {
 
@@ -48,6 +50,7 @@ export class User {
         this.hobbies = hobbies;
         this.followers = followers;
         this.following = following;
+        this.score = score;
 
     }
 }

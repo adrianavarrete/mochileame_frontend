@@ -14,7 +14,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ProfileDetailsPage implements OnInit {
 
-  user = new User('','','','','','','','','','','','','','');
+  user = new User('', '', '', '', '', '', '', '', '', '', '', '', '', '');
   idUser = localStorage.getItem("idUser");
 
   name: any;
@@ -24,6 +24,7 @@ export class ProfileDetailsPage implements OnInit {
   gender: any;
   biography: any;
   hobbies: any;
+  score: any;
 
 
   constructor(public userService: UserService, private router: Router) { }
@@ -36,26 +37,29 @@ export class ProfileDetailsPage implements OnInit {
 
     // this.phones.set(form.value.key, form.value.value);
 
-    if(form.value.name != null){
+    if (form.value.name != null) {
       this.user.name = form.value.name;
     }
-    if(form.value.lastname != null){
+    if (form.value.lastname != null) {
       this.user.lastname = form.value.lastname;
     }
-    if(form.value.dateofbirth != null){
+    if (form.value.dateofbirth != null) {
       this.user.dateofbirth = form.value.dateofbirth;
     }
-    if(form.value.nationality != null){
+    if (form.value.nationality != null) {
       this.user.nationality = form.value.nationality;
     }
-    if(form.value.gender != null){
+    if (form.value.gender != null) {
       this.user.gender = form.value.gender;
     }
-    if(form.value.biography != null){
+    if (form.value.biography != null) {
       this.user.biography = form.value.biography;
     }
-    if(form.value.hobbies != null){
+    if (form.value.hobbies != null) {
       this.user.hobbies = form.value.hobbies;
+    }
+    if (form.value.score != null) {
+      this.user.score = form.value.score;
     }
 
     console.log(this.user);
@@ -65,7 +69,7 @@ export class ProfileDetailsPage implements OnInit {
         console.log(res);
         this.resetForm(form);
         this.router.navigateByUrl("/tabs/tab1");
-        
+
       });
 
   }
