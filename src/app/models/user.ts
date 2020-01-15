@@ -14,6 +14,7 @@ export class User {
     followers: [string];
     following: [string];
     score: [number];
+    whoScore: [string];
 
     //------------- Comento los atributos que a día de hoy no son requeridos en mongoose ---------------//
 
@@ -32,7 +33,8 @@ export class User {
         hobbies = null,
         followers= null,
         following= null,
-        score= null
+        score= null,
+        whoScore= null
 
     ) {
 
@@ -51,6 +53,7 @@ export class User {
         this.followers = followers;
         this.following = following;
         this.score = score;
+        this.whoScore = whoScore;
 
     }
 }
