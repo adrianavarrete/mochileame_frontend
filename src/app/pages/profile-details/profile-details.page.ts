@@ -58,9 +58,6 @@ export class ProfileDetailsPage implements OnInit {
     if (form.value.hobbies != null) {
       this.user.hobbies = form.value.hobbies;
     }
-    if (form.value.score != null) {
-      this.user.score = form.value.score;
-    }
 
     console.log(this.user);
 
