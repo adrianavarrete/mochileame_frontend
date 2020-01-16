@@ -16,6 +16,7 @@ export class MyprofilePage implements OnInit, OnDestroy {
   user = new User('', '', '', '', '', '', '', '', '', '', '', '', '', '');
   idUser = localStorage.getItem('idUser');
   existe: Boolean;
+  score: number;
   travelGroup: TravelGroup;
   listaTravelGroups: TravelGroup[] = [];
   groupActual: TravelGroup = new TravelGroup;
@@ -35,6 +36,8 @@ export class MyprofilePage implements OnInit, OnDestroy {
   ngOnInit() {
     this.getUser(this.idUser);
     this.getListaTravelGroups();
+    this.checkScore(this.idUser);
+
 
 
   }
@@ -107,83 +110,83 @@ export class MyprofilePage implements OnInit, OnDestroy {
 
 
 
- delete(){
+  delete() {
 
-  this.delUserInTravelGroup = new TravelGroup();
-  this.listaTravelGroups.forEach(grupo => {
+    this.delUserInTravelGroup = new TravelGroup();
+    this.listaTravelGroups.forEach(grupo => {
 
-    grupo.users.forEach(stringUser => {
+      grupo.users.forEach(stringUser => {
 
-      if (this.idUser != stringUser) {
-        this.delUserInTravelGroup.users.push(stringUser);
-      }
+        if (this.idUser != stringUser) {
+          this.delUserInTravelGroup.users.push(stringUser);
+        }
 
-  });
+      });
 
-  
-  this.service.delUserInGroup(this.delUserInTravelGroup, grupo._id)
-    .subscribe((res) => {
 
-      console.log(res);
+      this.service.delUserInGroup(this.delUserInTravelGroup, grupo._id)
+        .subscribe((res) => {
 
-    }), ((error) => {
-      console.log(error);
+          console.log(res);
+
+        }), ((error) => {
+          console.log(error);
+        });
+
     });
+    if (this.user.followers != null) {
+      this.user.followers.forEach(follower => {
+        this.userService.getUsuario(follower)
+          .subscribe((res) => {
+            this.dejardeseguirme(res);
+            console.log(res);
 
-});
-if(this.user.followers != null){
- this.user.followers.forEach(follower => {
- this.userService.getUsuario(follower)  
- .subscribe((res) => {
-  this.dejardeseguirme(res);
-  console.log(res);
+          }), ((error) => {
+            console.log(error);
+          });
 
-}), ((error) => {
-  console.log(error);
-});
+      });
+    }
 
-});
- }
-  
-if(this.user.following != null){
-this.user.following.forEach(following => {
-  this.userService.getUsuario(following)  
-  .subscribe((res) => {
-   this.dejardeseguirme(res);
-   console.log(res);
- 
- }), ((error) => {
-   console.log(error);
- });
- });
-}
+    if (this.user.following != null) {
+      this.user.following.forEach(following => {
+        this.userService.getUsuario(following)
+          .subscribe((res) => {
+            this.dejardeseguirme(res);
+            console.log(res);
 
- this.userService.delete(this.user)
-.subscribe(res => {
-  console.log(res);
-  this.user = res;
-  this.router.navigateByUrl("");
+          }), ((error) => {
+            console.log(error);
+          });
+      });
+    }
 
-});
+    this.userService.delete(this.user)
+      .subscribe(res => {
+        console.log(res);
+        this.user = res;
+        this.router.navigateByUrl("");
+
+      });
 
   }
 
-  dejardeseguirme(user : User){
+  dejardeseguirme(user: User) {
 
 
     let nodelfolowing: [string] = [""];
     let nodelfolower: [string] = [""];
-    
+
     nodelfolower.pop();
     nodelfolowing.pop();
 
-  user.following.forEach(following => {
+    user.following.forEach(following => {
 
-    if (this.idUser != following) {
-      nodelfolowing.push(following);
-      
-    }
-  });
+      if (this.idUser != following) {
+        nodelfolowing.push(following);
+
+      }
+    });
 
     user.followers.forEach(followers => {
 
@@ -193,20 +196,45 @@ this.user.following.forEach(following => {
 
     });
 
-      user.followers = nodelfolowing;
-      user.following = nodelfolower;
+    user.followers = nodelfolowing;
+    user.following = nodelfolower;
 
-    
-      this.userService.updateUser(user)
+
+    this.userService.updateUser(user)
       .subscribe(res => {
         console.log(res);
         this.user = res;
       });
-  
+
 
   }
+  checkScore(user: string) {
+    let number = 0;
+    let totalScores = 0;
+    this.userService.getUsuario(user)
+      .subscribe(res => {
+        console.log(res.score.length);
+        this.user = res;
+        console.log(this.user.score.length);
+
+        if (this.user.score.length === 0) {
+          this.score = null;
+          console.log('No tiene puntuación');
+        } else {
+          totalScores = this.user.score.length;
+          this.user.score.forEach(element => {
+            number += element.value;
+          });
+
+          this.score = number / totalScores;
+          console.log('La puntuación es de' + this.score);
+        }
+        console.log(this.score);
+
+      });
 
 
+  }
 }
 
 

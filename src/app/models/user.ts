@@ -1,3 +1,5 @@
+import { Score } from './score';
+
 export class User {
     _id: string;
     username: string;
@@ -13,10 +15,7 @@ export class User {
     hobbies: [string];
     followers: [string];
     following: [string];
-    score: [number];
-    whoScore: [string];
-
-    //------------- Comento los atributos que a día de hoy no son requeridos en mongoose ---------------//
+    score: Score[];
 
     constructor(
         _id = '',
@@ -31,10 +30,10 @@ export class User {
         photo = '',
         biography = '',
         hobbies = null,
-        followers= null,
-        following= null,
-        score= null,
-        whoScore= null
+        followers = null,
+        following = null,
+        score = null,
+
 
     ) {
 
@@ -53,7 +52,6 @@ export class User {
         this.followers = followers;
         this.following = following;
         this.score = score;
-        this.whoScore = whoScore;
 
     }
 }
