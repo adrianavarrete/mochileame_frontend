@@ -30,15 +30,54 @@ export class MisGruposPage implements OnInit {
   destination: any;
   gender: any;
   hobbies: any;
-
-
+  fileData: File = null;
+  previewUrl:any = null;
+  fileUploadProgress: string = null;
+  uploadedFilePath: string = null;
+  fotoDelBc: any;
+  imageToShow: any;
+  isImageLoading: boolean;
 
   ngOnInit() {
     this.id = localStorage.getItem('idUser');
     this.getListaTravelGroups();
     this.show = true;
     this.listaTravelGroupsBackup = this.listaTravelGroups;
+    this.getImageFromService  ();
   }
+
+
+
+  fileProgress(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
+    this.preview();
+}
+
+preview() {
+  // Show preview 
+  var mimeType = this.fileData.type;
+  if (mimeType.match(/image\/*/) == null) {
+    return;
+  }
+
+  var reader = new FileReader();      
+  reader.readAsDataURL(this.fileData); 
+  reader.onload = (_event) => { 
+    this.previewUrl = reader.result; 
+  }
+}
+
+onSubmit() {
+  const formData = new FormData();
+    formData.append('file', this.fileData);
+    this.service.postFoto(formData)
+         .subscribe(res => {
+            console.log(res);      
+            alert('SUCCESS !!');
+      })
+
+      
+}
 
   showFunc() {
     if (this.show == true) { this.show = false; }
@@ -93,6 +132,44 @@ export class MisGruposPage implements OnInit {
     }
     this.showFunc();
   }
+
+  getFoto()
+  {
+    this.service.getFoto('/uploads/dsffs.jpg')
+      .subscribe((res) => {this.fotoDelBc = res;
+      this.fotoDelBc;
+      })
+  }
+
+
+
+  getImageFromService() {
+    this.isImageLoading = true;
+    this.service.getFoto('uploads/dsffs.jpg').subscribe(data => {
+      this.createImageFromBlob(data);
+      this.isImageLoading = false;
+    }, error => {
+      this.isImageLoading = false;
+      console.log(error);
+    });
+}
+
+
+  createImageFromBlob(image: Blob) {
+     let reader = new FileReader();
+     reader.addEventListener("load", () => {
+        this.imageToShow = reader.result;
+     }, false);
+  
+     if (image) {
+        reader.readAsDataURL(image);
+     }
+  }
+
+
+
+
+
 
   getListaTravelGroups() {
     this.service.getTravelGroups()

@@ -52,8 +52,8 @@
             </ion-card-content>
 
             
-            <ion-button type="submit" expand="full" (click)="creargrupo(grupoForm)">
-            Crear grupo</ion-button>
+            <ion-button [hidden]=!show type="submit" expand="full" (click)="creargrupo(grupoForm)">
+            Crear grupo</ion-button >
           </ion-card>
 
 
@@ -64,5 +64,35 @@
      
     </form>
     
+    <ion-row>  <ion-col size-md="6" offset-md="3">
+
+
+      <div class="container" [hidden]=show>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>Elije una foto</h3>            
+                <div class="form-group">
+                    <input type="file" name="image" (change)="fileProgress($event)" />
+                </div>
+                <div *ngIf="fileUploadProgress">
+                    Upload progress: {{ fileUploadProgress }}
+                </div>
+                <div class="image-preview mb-3" *ngIf="previewUrl">
+                    <img [src]="previewUrl" height="300" />                 
+                </div>
+     
+                <div class="mb-3" *ngIf="uploadedFilePath">
+                    {{uploadedFilePath}}
+                </div>
+                 
+                <div class="form-group">
+                    <button class="btn btn-primary"  (click)="onSubmit()">Guardar foto</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    </ion-col> </ion-row> 
   </ion-grid>
 </ion-content>

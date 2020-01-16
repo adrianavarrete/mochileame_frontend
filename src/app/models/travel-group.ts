@@ -11,7 +11,7 @@ export class TravelGroup {
     hobbies: [string];
     createdBy: string;
     dateOfCreation: Date;
-
+    path: string;
     constructor(
         _id = '',
         name = '',
@@ -24,7 +24,8 @@ export class TravelGroup {
         gender = '',
         hobbies = null,
         createdBy = '',
-        dateOfCreation = null
+        dateOfCreation = null,
+        path =''    
     ) {
 
         this._id = _id;
@@ -39,6 +40,7 @@ export class TravelGroup {
         this.hobbies = hobbies;
         this.createdBy = createdBy;
         this.dateOfCreation = dateOfCreation;
+        this.path = path;
 
     }
 }

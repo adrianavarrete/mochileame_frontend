@@ -172,22 +172,21 @@ export class ProfilePage implements OnInit {
   }
 
   checkScore(myId: string) {
-    this.iScored = false;
-    if (this.user.score === null) {
-      this.score = null;
-    } else {
-      this.totalScores = this.user.score.length;
-      this.user.score.forEach(element => {
+  //   this.iScored = false;
+  //   if (this.user.score === null) {
+  //     this.score = null;
+  //   } else {
+  //     this.totalScores = this.user.score.length;
+  //     this.user.score.forEach(element => {
 
-        if (element.userId === myId) {
-          this.iScored = true;
-          console.log(this.iScored);
-        }
-      });
-    }
-    console.log(this.following);
+  //       if (element == myId) {
+  //         this.iScored = true;
+  //         console.log(this.iScored);
+  //       }
+  //     });
+  //   }
+  //   console.log(this.following);
 
   }
-
 
 }
