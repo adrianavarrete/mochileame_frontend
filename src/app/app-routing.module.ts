@@ -62,7 +62,19 @@ const routes: Routes = [
   {
     path: 'consejos',
     loadChildren: () => import('./pages/consejos/consejos.module').then( m => m.ConsejosPageModule)
+  },  {
+    path: 'foro',
+    loadChildren: () => import('./pages/foro/foro.module').then( m => m.ForoPageModule)
+  },
+  {
+    path: 'post',
+    loadChildren: () => import('./pages/post/post.module').then( m => m.PostPageModule)
+  },
+  {
+    path: 'creartema',
+    loadChildren: () => import('./pages/creartema/creartema.module').then( m => m.CreartemaPageModule)
   }
+
 
 
 
