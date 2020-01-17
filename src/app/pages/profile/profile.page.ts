@@ -213,6 +213,8 @@ export class ProfilePage implements OnInit {
     this.goProfile();
   }
 
+
+  
   checkScore(user: string) {
     let number = 0;
     let totalScores = 0;
@@ -242,5 +244,6 @@ export class ProfilePage implements OnInit {
   goProfile() {
     this.router.navigateByUrl('/tabs/tab3');
   }
+
 
 }

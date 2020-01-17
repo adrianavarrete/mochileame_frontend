@@ -22,7 +22,7 @@ export class SignUpPage implements OnInit {
   user = new User('','','','','','','','','','','','','','');
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
     route.params.subscribe(val => { // necesario para poder volver a ejecutar ngoninit al volver de otra pagina
-      this.getUser(this.id);
+      //this.getUser(this.id);
     });
     this.form = new FormGroup({
       mail: new FormControl('', Validators.pattern(".+\@.+\..+")),

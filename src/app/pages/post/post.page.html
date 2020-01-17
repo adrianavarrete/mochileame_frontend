@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>
+      Mochileame
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid fixed>
+    <form #grupoForm="ngForm" >
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-header>
+                <ion-title text-center>
+                    Post de {{userDelPost.name}}
+            
+                  </ion-title>
+                            
+                <ion-card-title> {{postActual.titulo}}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+              
+             
+          
+            </ion-card-content>
+
+            
+          </ion-card>
+
+          <div *ngFor="let mensaje of lista1">
+          <ion-card>
+            <ion-card-header>
+                <ion-title text-center>
+                    
+            
+                  </ion-title>
+                            
+                <ion-card-title> Mensaje de {{mensaje.user}}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>                                 
+                    <td>{{mensaje.texto}}</td>      
+            </ion-card-content>
+
+          </ion-card>
+        </div>
+        </ion-col>
+      </ion-row>
+
+
+     
+    </form>
+    
+
+    <form #textoForm="ngForm" (ngSumbit)="getUser(textoForm)">
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Postea tu mensaje </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item [hidden] = showNoPoderPostear>         
+              <textarea [(ngModel)]="textarea" name="textarea" rows="15" cols="65">Escribe aquí tu mensaje</textarea>
+            </ion-item>
+              <ion-item [hidden]=showCambiarEstado>  
+                <ion-label position="floating">Estado</ion-label>
+                <ion-select multiple="false" placeholder="Selecciona un estado" type="text" [(ngModel)]="estado"
+                  name="estado">
+                  <ion-select-option value="Abierto">Abierto</ion-select-option>
+                  <ion-select-option value="Cerrado">Cerrado</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-card-content>
+            
+            <ion-button type="submit" expand="full" (click)="getUser(textoForm)" [hidden] = showboton>
+            Enviar</ion-button>
+            
+          </ion-card>
+
+
+        </ion-col>
+      </ion-row>
+
+
+     
+    </form>
+
+
+  </ion-grid>
+</ion-content>

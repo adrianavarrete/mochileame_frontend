@@ -51,6 +51,10 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('/creargrupo');
   }
 
+  goForo()
+  {
+    this.router.navigateByUrl('/foro');
+  }
 
   addUserInGroup(addUserTravelGroup: TravelGroup) {
     this.addInTravelGroup = addUserTravelGroup;
