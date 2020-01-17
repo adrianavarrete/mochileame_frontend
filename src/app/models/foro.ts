@@ -5,7 +5,8 @@ export class Foro{
     creador: string;
     titulo:string;
     estado: string; 
-    mensajes: string [] ;
+    mensajes: string [];
+    path: string;
     
    
     constructor(
@@ -13,7 +14,8 @@ export class Foro{
         creador = '',
         titulo = '',
         estado = '',
-        mensajes = []
+        mensajes = [],
+        path = ''
         
 
     ) {
@@ -23,6 +25,7 @@ export class Foro{
         this.titulo = titulo;
         this.estado = estado;
         this.mensajes = mensajes;
+        this.path = path;
  
 
     }
