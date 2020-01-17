@@ -64,7 +64,7 @@ cambioPath(path)
 }
 
 postFoto(formData){
- 
+  
     return this.http.post(this.URL_API + '/foto', formData);
 
 
