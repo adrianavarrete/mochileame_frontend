@@ -6,100 +6,113 @@
   </ion-toolbar>
 </ion-header>
 
+
+
+
 <ion-content>
-<ion-grid fixed>
+
+  <ion-grid fixed>
 
     <ion-row>
-        <ion-col size-md="6" offset-md="3">
-            <ion-button type="submit" expand="full" (click)="showFunc()">Abrir filtros</ion-button>
-         
-          <form #filterForm="ngForm" (ngSumbit)="filterFunction(filterForm)">
-            <ion-card [hidden]=show>
+
+      
+
+      <ion-col size-md="6" offset-md="3">
+          <ion-button type="submit" expand="full" (click)="showFunc()">Abrir filtros</ion-button>
+       
+        <form #filterForm="ngForm" (ngSumbit)="filterFunction(filterForm)">
+          <ion-card [hidden]=show>
+            <ion-card-header>
+              <ion-card-title>Filtro</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">destino</ion-label>
+                <ion-input type="text" [(ngModel)]="destination" name="destination"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Genero</ion-label>
+                <ion-select multiple="false" placeholder="Selecciona un genero" type="text" [(ngModel)]="gender"
+                  name="gender">
+                  <ion-select-option value="Masculino">Masculino</ion-select-option>
+                  <ion-select-option value="Femenino">Femenino</ion-select-option>
+                  <ion-select-option value="mix">Mix</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Hobbies</ion-label>
+                <ion-select multiple="true" placeholder="Selecciona tus hobbies favoritos" okText="Ok"
+                  cancelText="Cancelar" type="text" [(ngModel)]="hobbies" name="hobbies">
+                  <ion-select-option value="Deportes">Deportes</ion-select-option>
+                  <ion-select-option value="Tecnología ">Tecnología</ion-select-option>
+                  <ion-select-option value="Animales">Animales</ion-select-option>
+                  <ion-select-option value="Gastronomía">Gastronomía</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <div class="ion-padding">
+                <ion-button expand="block" type="submit" class="ion-no-margin" (click)="filterFunction(filterForm)">
+                  Listo</ion-button>
+              </div>
+
+            </ion-card-content>
+          </ion-card>
+        </form>
+      </ion-col>
+
+    </ion-row>
+
+
+
+
+
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <!-- <div class="ion-padding"> -->
+          <div *ngFor="let travelGroup of listaTravelGroups">
+
+            <ion-card>
               <ion-card-header>
-                <ion-card-title>Filtro</ion-card-title>
+                <ion-card-title>{{travelGroup.name}}</ion-card-title>
+                <ion-card-subtitle>{{travelGroup.destination}}</ion-card-subtitle>
               </ion-card-header>
+
               <ion-card-content>
-                <ion-item>
-                  <ion-label position="floating">Nombre</ion-label>
-                  <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label position="floating">destino</ion-label>
-                  <ion-input type="text" [(ngModel)]="destination" name="destination"></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label position="floating">Genero</ion-label>
-                  <ion-select multiple="false" placeholder="Selecciona un genero" type="text" [(ngModel)]="gender"
-                    name="gender">
-                    <ion-select-option value="Masculino">Masculino</ion-select-option>
-                    <ion-select-option value="Femenino">Femenino</ion-select-option>
-                    <ion-select-option value="mix">Mix</ion-select-option>
-                  </ion-select>
-                </ion-item>
-                <ion-item>
-                  <ion-label position="floating">Hobbies</ion-label>
-                  <ion-select multiple="true" placeholder="Selecciona tus hobbies favoritos" okText="Ok"
-                    cancelText="Cancelar" type="text" [(ngModel)]="hobbies" name="hobbies">
-                    <ion-select-option value="Deportes">Deportes</ion-select-option>
-                    <ion-select-option value="Tecnología ">Tecnología</ion-select-option>
-                    <ion-select-option value="Animales">Animales</ion-select-option>
-                    <ion-select-option value="Gastronomía">Gastronomía</ion-select-option>
-                  </ion-select>
-                </ion-item>
-                <div class="ion-padding">
-                  <ion-button expand="block" type="submit" class="ion-no-margin" (click)="filterFunction(filterForm)">
-                    Listo</ion-button>
-                </div>
-  
+                {{travelGroup.hobbies}}
+                 <!-- <ion-row>  -->
+              <ion-col>
+                  <button ion-button icon-start clear small>
+                    <ion-icon name="thumbs-up"></ion-icon>
+                    <div>Número de usuarios: {{travelGroup.users.length}}</div>
+                  </button>
+
+                  
+                </ion-col>
+                <ion-col>
+
+                  <button ion-button icon-start clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div>¡Perteneces a este grupo!</div>
+                  </button>
+                </ion-col>
+                <ion-col align-self-center text-center>
+                  <button ion-button icon-start clear small (click)="goToDetail(travelGroup)">
+                    <ion-icon name="text"></ion-icon>
+                    <div>Entrar a cotillear</div>
+                  </button>
+                </ion-col> 
+                <!-- </ion-row> -->
               </ion-card-content>
             </ion-card>
-          </form>
+          </div>
+        <!-- </div> -->
         </ion-col>
-  
-      </ion-row>
-  
+    </ion-row> 
 
-        <ion-row>
-                <ion-col size-md="6" offset-md="3">
-                  <!-- <div class="ion-padding"> -->
-                    <div *ngFor="let travelGroup of listaTravelGroups">
-                      <ion-card>
-                        <ion-card-header>
-                          <ion-card-title>{{travelGroup.name}}</ion-card-title>
-                          <ion-card-subtitle>{{travelGroup.destination}}</ion-card-subtitle>
-                        </ion-card-header>
-                        <ion-card-content>
-                          {{travelGroup.hobbies}}
-                           <!-- <ion-row>  -->
-                        <ion-col>
-                            <button ion-button icon-start clear small>
-                              <ion-icon name="thumbs-up"></ion-icon>
-                              <div>Número de usuarios: {{travelGroup.users.length}}</div>
-                            </button>
-                          </ion-col>
-                          <ion-col>
-                                <button ion-button icon-start clear small (click)="addUserInGroup(travelGroup)">
-                              <ion-icon name="text"></ion-icon>
-                              <div>¡Unirse!</div>
-                            </button>
-                          </ion-col>
-                          <ion-col align-self-center text-center>
-                            <button ion-button icon-start clear small (click)="goToDetail(travelGroup)">
-                              <ion-icon name="text"></ion-icon>
-                              <div>Entrar a cotillear</div>
-                            </button>
-                          </ion-col> 
-                          <!-- </ion-row> -->
-                        </ion-card-content>
-                      </ion-card>
-                    </div>
-                  <!-- </div> -->
-                  </ion-col>
-              </ion-row> 
-          <ion-row> 
-              <ion-col size-md="6" offset-md="3">
-            <ion-button expand="full"  (click)="goCreargrupo()">CREAR UN NUEVO GRUPO</ion-button>
-           </ion-col>
-          </ion-row>
-            </ion-grid>
-          </ion-content>
+
+
+  </ion-grid>
+</ion-content>

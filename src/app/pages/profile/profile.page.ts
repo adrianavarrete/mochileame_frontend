@@ -213,23 +213,6 @@ export class ProfilePage implements OnInit {
     this.goProfile();
   }
 
-<<<<<<< HEAD
-  checkScore(myId: string) {
-  //   this.iScored = false;
-  //   if (this.user.score === null) {
-  //     this.score = null;
-  //   } else {
-  //     this.totalScores = this.user.score.length;
-  //     this.user.score.forEach(element => {
-
-  //       if (element == myId) {
-  //         this.iScored = true;
-  //         console.log(this.iScored);
-  //       }
-  //     });
-  //   }
-  //   console.log(this.following);
-=======
   checkScore(user: string) {
     let number = 0;
     let totalScores = 0;
@@ -254,7 +237,6 @@ export class ProfilePage implements OnInit {
         console.log(this.score);
 
       });
->>>>>>> df3ae3c8c628f41a132794af2a34185909718db8
 
   }
   goProfile() {
