@@ -29,6 +29,8 @@ export class GrupoDetailPage implements OnInit {
   listaUsuariosDentro: User[] = [];
   constructor(private userService: UserService, private service: routesService) { }
   aa: TravelGroup;
+  imageToShow: any;
+  isImageLoading: boolean;
 
   async ngOnInit() {
 
@@ -38,6 +40,7 @@ export class GrupoDetailPage implements OnInit {
     this.iduser = this.groupActual.createdBy
     //this.findUserInTravel();
     this.lista = this.groupActual.users;
+    
 
 
   }
@@ -60,7 +63,9 @@ export class GrupoDetailPage implements OnInit {
         this.listaUsuariosDentro = [];
         this.getListaUsuariosDentro();
         this.findUserInTravel();
-
+        if(this.groupActual.path != "Nada" && this.groupActual.path != null){
+        this.getImageFromService();
+        }
 
         //localStorage.setItem("idTravelGroup", "");
 
@@ -153,7 +158,28 @@ export class GrupoDetailPage implements OnInit {
   }
 
 
+  getImageFromService() {
+    this.isImageLoading = true;
+    this.service.getFoto(this.groupActual.path).subscribe(data => {
+      this.createImageFromBlob(data);
+      this.isImageLoading = false;
+    }, error => {
+      this.isImageLoading = false;
+      console.log(error);
+    });
+}
 
+
+  createImageFromBlob(image: Blob) {
+     let reader = new FileReader();
+     reader.addEventListener("load", () => {
+        this.imageToShow = reader.result;
+     }, false);
+  
+     if (image) {
+        reader.readAsDataURL(image);
+     }
+  }
 
   // async getTravelGrou2()
   // {

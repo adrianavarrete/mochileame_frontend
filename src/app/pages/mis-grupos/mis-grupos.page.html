@@ -88,6 +88,13 @@
                     <ion-icon name="thumbs-up"></ion-icon>
                     <div>Número de usuarios: {{travelGroup.users.length}}</div>
                   </button>
+
+                  <img [src]="imageToShow"
+                  alt="Place image title"
+                  *ngIf="!isImageLoading; else noImageFound">
+                <ng-template #noImageFound>
+                  <img src="fallbackImage.png" alt="Fallbackimage">
+                </ng-template>
                 </ion-col>
                 <ion-col>
 
@@ -109,6 +116,8 @@
         <!-- </div> -->
         </ion-col>
     </ion-row> 
+
+
 
   </ion-grid>
 </ion-content>

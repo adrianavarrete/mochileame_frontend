@@ -47,5 +47,34 @@ creargrupo(travelgrup: TravelGroup): Observable<TravelGroup>{
  
  
 }
+
+
+getFoto(url)
+{
+    return this.http.get(this.URL_API + '/'+ url, { responseType: 'blob' });
+   // http://localhost:3000/uploads/dsffs.jpg
+}
+
+cambioPath(path)
+{
+
+    //travelgroupPath
+    return this.http.put(this.URL_API + '/travelgroupPath', path);
+
+}
+
+postFoto(formData){
+ 
+    return this.http.post(this.URL_API + '/foto', formData);
+
+
+     // this.http.post('url/to/your/api', formData)
+    //   .subscribe(res => {
+    //     console.log(res);
+    //     this.uploadedFilePath = res.data.filePath;
+    //     alert('SUCCESS !!');
+    //   })
+}
+
  
 }

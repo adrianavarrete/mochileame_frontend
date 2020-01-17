@@ -28,14 +28,20 @@ export class CreargrupoPage implements OnInit {
   fechainicio: any;
   fechafin: any;
   gender: any;
-
+  fileData: File = null;
+  previewUrl:any = null;
+  fileUploadProgress: string = null;
+  uploadedFilePath: string = null;  
+  show: Boolean;
+  idGrupo: any;
 
 
  
-  constructor( public userService: UserService, public routesService: routesService, private router: Router) { }
+  constructor( public userService: UserService, public routesService: routesService, private router: Router, public service: routesService) { }
 
   ngOnInit() {
 
+    this.show = true;
     this.getUser(this.idUser);
 
   }
@@ -80,14 +86,16 @@ export class CreargrupoPage implements OnInit {
   this.travelgrup.createdBy = this.creador._id;
   this.travelgrup.hobbies = this.creador.hobbies;
   this.travelgrup.users.push(this.creador._id);
-
+  this.travelgrup.path = "Nada";
   
 this.routesService.creargrupo(this.travelgrup)
     .subscribe(res => {
       console.log(res);
+      this.idGrupo = res._id;
+      this.show = false;
       this.travelgrup = this.borradorDeGrupo;
-      this.resetForm(form);
-      this.router.navigateByUrl("/tabs/tab1");
+      //this.resetForm(form);
+      //this.router.navigateByUrl("/tabs/tab1");
     }), (error => {
       console.log(error);
       
@@ -98,6 +106,59 @@ this.routesService.creargrupo(this.travelgrup)
   }
 
 
+  fileProgress(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
+    this.preview();
+}
+
+preview() {
+  // Show preview 
+  var mimeType = this.fileData.type;
+  if (mimeType.match(/image\/*/) == null) {
+    return;
+  }
+
+  var reader = new FileReader();      
+  reader.readAsDataURL(this.fileData); 
+  reader.onload = (_event) => { 
+    this.previewUrl = reader.result; 
+  }
+}
+
+onSubmit() {
+  const formData = new FormData();
+    formData.append('file', this.fileData);
+    this.service.postFoto(formData)
+         .subscribe(res => {
+            console.log(res); 
+            console.log(res['path']  ); 
+            this.cambiarPath(this.idGrupo, res); 
+           //this.resetForm(form);
+      //this.router.navigateByUrl("/tabs/tab1");
+            
+      })
+
+      
+}
+
+cambiarPath(id: any, path: any)
+{
+
+  const cambio = ({
+    id,
+    path
+  });
+  
+  this.service.cambioPath(cambio)
+    .subscribe(res=>{
+
+      alert('Se ha creado y subido todo!');
+      this.router.navigateByUrl("/tabs/tab1");
+
+
+    }),(error=>{})
+
+}
 
   resetForm(form?: NgForm) {
     if (form) {

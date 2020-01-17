@@ -11,7 +11,7 @@
 <ion-content>
 
   <ion-grid fixed>
-    <form>
+    <form #scoreForm="ngForm" (ngSumbit)="pushScore(scoreForm)">
       <ion-row>
         <ion-col size-md="6" offset-md="3">
           <ion-card>
@@ -76,9 +76,34 @@
         <ion-col size-md="6" offset-md="3">
           <ion-card>
             <ion-card-header>
-              <ion-card-title>Puntuación: 3/5</ion-card-title>
+              <div *ngIf="score != null; else scori">
+                <ion-card-title>Puntuación: {{ score | number : '1.2-2' }}/5</ion-card-title>
+              </div>
+              <ng-template #scori>
+                <ion-card-title>Puntuación: Aún no se ha puntuado</ion-card-title>
+              </ng-template>
+
             </ion-card-header>
             <ion-card-content>
+              <div *ngIf="following != false; else notFollowing">
+                <ion-item>
+                  <ion-select multiple="false" placeholder="Puntua!" okText="Ok" cancelText="Cancelar" type="text"
+                    [(ngModel)]="score" name="score">
+                    <ion-select-option value="1">1</ion-select-option>
+                    <ion-select-option value="2 ">2</ion-select-option>
+                    <ion-select-option value="3">3</ion-select-option>
+                    <ion-select-option value="4">4</ion-select-option>
+                    <ion-select-option value="5">5</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-button expand="block" type="submit" class="ion-no-margin" (click)="pushScore(scoreForm)">
+                    Puntuar</ion-button>
+                </ion-item>
+              </div>
+              <ng-template #notFollowing>
+              </ng-template>
+        
 
             </ion-card-content>
           </ion-card>
@@ -99,14 +124,14 @@
       </div>
 
       <ng-template #unfollow>
-          <ion-row>
-              <ion-col size-md="6" offset-md="3">
-                <div class="ion-padding">
-                  <ion-button expand="block" type="submit" class="ion-no-margin" (click)="ufollow(user._id)">
-                    Dejar de seguir</ion-button>
-                </div>    
-              </ion-col>
-            </ion-row>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <div class="ion-padding">
+              <ion-button expand="block" type="submit" class="ion-no-margin" (click)="ufollow(user._id)">
+                Dejar de seguir</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
       </ng-template>
 
     </form>
