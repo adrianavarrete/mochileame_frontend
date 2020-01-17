@@ -33,17 +33,17 @@ export class ForoService {
   
   updatePost(foro: Foro): Observable<Foro> {
     console.log(foro);
-    return this.http.put<Foro>(this.URL_API + `/post/${foro._id}`, foro);
+    return this.http.put<Foro>(this.URL_API + '/post'+`/${foro._id}`, foro);
   }
 
   postPost(foro: Foro) {
     console.log(foro);
-    return this.http.post(this.URL_API + '/post', foro);
+    return this.http.post<Foro>(this.URL_API + '/post', foro);
   }
 
   getFoto(url)
 {
-    return this.http.get(this.URL_API + '/'+ url, { responseType: 'blob' });
+    return this.http.get('http://localhost:3000' + '/'+ url, { responseType: 'blob' });
    // http://localhost:3000/uploads/dsffs.jpg
 }
 
@@ -51,13 +51,13 @@ cambioPath(path)
 {
 
     //travelgroupPath
-    return this.http.put(this.URL_API + '/travelgroupPath', path);
+    return this.http.put(this.URL_API + '/foto', path);
 
 }
 
 postFoto(formData){
   
-    return this.http.post(this.URL_API + '/foto', formData);
+    return this.http.post('http://localhost:3000'  + '/foto2', formData);
 
 
      // this.http.post('url/to/your/api', formData)

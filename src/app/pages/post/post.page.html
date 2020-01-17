@@ -18,15 +18,20 @@
           <ion-card>
             <ion-card-header>
                 <ion-title text-center>
-                    Post de {{userDelPost.name}}
-            
+                    Post: {{postActual.titulo}}
+                   
                   </ion-title>
                             
-                <ion-card-title> {{postActual.titulo}}</ion-card-title>
+                <ion-card-title>Creador: {{userDelPost.name}}</ion-card-title>
               </ion-card-header>
               <ion-card-content>
               
-             
+                <img [src]="imageToShow"
+                alt="Place image title"
+                *ngIf="!isImageLoading; else noImageFound">
+              <ng-template #noImageFound>
+                <img src="fallbackImage.png" alt="Fallbackimage">
+              </ng-template>
           
             </ion-card-content>
 

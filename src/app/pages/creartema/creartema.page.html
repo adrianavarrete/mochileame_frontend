@@ -30,7 +30,7 @@
       
             </ion-card-content>
             
-            <ion-button type="submit" expand="full" (click)="crearpost(postForm)">
+            <ion-button type="submit" expand="full" (click)="crearpost(postForm)" [hidden] = !show>
             Enviar</ion-button>
           </ion-card>
 
@@ -46,7 +46,7 @@
     <ion-row>  <ion-col size-md="6" offset-md="3">
 
 
-      <div class="container">
+      <div class="container" [hidden] = show>
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h3>Elije una foto</h3>            

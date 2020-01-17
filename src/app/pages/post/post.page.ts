@@ -17,6 +17,8 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class PostPage implements OnInit {
 
+  imageToShow: any;
+  isImageLoading: boolean;
 
   id: string;
   idpost: string;
@@ -59,7 +61,28 @@ export class PostPage implements OnInit {
   }
 
 
+  getImageFromService() {
+    this.isImageLoading = true;
+    this.service.getFoto(this.postActual.path).subscribe(data => {
+      this.createImageFromBlob(data);
+      this.isImageLoading = false;
+    }, error => {
+      this.isImageLoading = false;
+      console.log(error);
+    });
+}
 
+
+  createImageFromBlob(image: Blob) {
+     let reader = new FileReader();
+     reader.addEventListener("load", () => {
+        this.imageToShow = reader.result;
+     }, false);
+  
+     if (image) {
+        reader.readAsDataURL(image);
+     }
+  }
 showEstado()
 {
   if (this.id == this.postActual.creador)
@@ -135,6 +158,7 @@ showPostear()
         this.cogerMensajes(res.mensajes);
         this.showEstado();    
         this.showPostear();
+        this.getImageFromService();
         //this.getListaUsuariosDentro();
         //this.findUserInTravel();
 

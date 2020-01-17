@@ -24,8 +24,9 @@ export class CreartemaPage implements OnInit {
   fileData: File = null;
   previewUrl:any = null;
   fileUploadProgress: string = null;
-   
- 
+  idPost :String;
+  show: Boolean;
+  foroborrador : Foro = new Foro;
 
 
 
@@ -34,6 +35,7 @@ export class CreartemaPage implements OnInit {
 
   ngOnInit() {
 
+    this.show = true;
     this.foro = new Foro();
     this.getUser(this.idUser);
 
@@ -69,7 +71,10 @@ export class CreartemaPage implements OnInit {
 this.foroService.postPost(this.foro)
     .subscribe(res => {
       console.log(res);
-      this.router.navigateByUrl('/foro');
+      //this.router.navigateByUrl('/foro');
+      this.idPost = res._id;
+      this.show = false;
+      this.foro = this.foroborrador;
          }), (error => {
       console.log(error);
       this.router.navigateByUrl('/foro');
@@ -106,14 +111,34 @@ onSubmit() {
     this.foroService.postFoto(formData)
          .subscribe(res => {
             console.log(res); 
-            console.log(res['path']  ); 
-            //this.cambiarPath(this.idGrupo, res); 
+            console.log(res['path']); 
+            
+            this.cambiarPath(this.idPost, res); 
            //this.resetForm(form);
       //this.router.navigateByUrl("/tabs/tab1");
             
       })
       
       
+}
+
+cambiarPath(id: any, path: any)
+{
+
+  const cambio = ({
+    id,
+    path
+  });
+  
+  this.foroService.cambioPath(cambio)
+    .subscribe(res=>{
+
+      alert('Se ha creado y subido todo!');
+      this.router.navigateByUrl('/foro');
+
+
+    }),(error=>{})
+
 }
 
 

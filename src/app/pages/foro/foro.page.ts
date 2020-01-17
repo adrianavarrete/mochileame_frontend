@@ -63,7 +63,7 @@ export class ForoPage implements OnInit {
 
   goHome()
    {
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl("/tabs/tab1");
    }
 
   
