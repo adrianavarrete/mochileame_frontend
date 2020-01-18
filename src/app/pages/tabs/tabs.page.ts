@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TabsPage implements OnInit {
 
+
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
     route.params.subscribe(val => { // necesario para poder volver a ejecutar ngoninit al volver de otra pagina
       this.getUser(localStorage.getItem('idUser'));
@@ -19,6 +20,7 @@ export class TabsPage implements OnInit {
     this.userService.getUsuario(idUser)
       .subscribe(res => {
         console.log(res);
+        localStorage.setItem('user', res.username);
 
       });
 

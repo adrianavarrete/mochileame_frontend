@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { routesService } from '../../services/routesService';
 import { TravelGroup } from '../../models/travel-group';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
+import { Socket } from 'ngx-socket-io';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-mis-grupos',
@@ -14,10 +17,12 @@ import { Router } from "@angular/router";
 export class MisGruposPage implements OnInit {
 
 
-  constructor(private alertCtrl: AlertController, private menu: MenuController, private service: routesService, private router: Router) { }
+  constructor(private userService: UserService,private alertCtrl: AlertController, private menu: MenuController, private service: routesService, private router: Router, private socket:Socket) { }
 
+  user = new User('', '', '', '', '', '', '', '', '', '', '', '', '', '');
   existe: Boolean;
   id: string;
+  idUser = localStorage.getItem("idUser");
   travelGroup: TravelGroup;
   listaTravelGroups: TravelGroup[] = [];
   listaTravelGroupsBackup: TravelGroup[] = [];
@@ -44,6 +49,7 @@ export class MisGruposPage implements OnInit {
     this.show = true;
     this.listaTravelGroupsBackup = this.listaTravelGroups;
     this.getImageFromService  ();
+    this.getUser(this.idUser);
   }
 
 
@@ -51,7 +57,7 @@ export class MisGruposPage implements OnInit {
   fileProgress(fileInput: any) {
     this.fileData = <File>fileInput.target.files[0];
     this.preview();
-}
+  }
 
 preview() {
   // Show preview 
@@ -205,7 +211,17 @@ onSubmit() {
   goToDetail(travelGroup: TravelGroup) {
 
     localStorage.setItem("idTravelGroup", travelGroup._id);
-    this.router.navigateByUrl('/grupo-detail');
+    //this.router.navigateByUrl('/grupo-detail');
+    this.router.navigateByUrl('/chat');
+
+  }
+
+  getUser(idUser: string) {
+    this.userService.getUsuario(idUser)
+      .subscribe(res => {
+        console.log(res);
+      });
+
   }
 
 
