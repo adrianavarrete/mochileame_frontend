@@ -1,5 +1,12 @@
 <ion-app>
   <ion-content padding>
     <ion-router-outlet></ion-router-outlet>
+    <!-- https://github.com/aws/aws-amplify/issues/678 fix: -->
+    <script>
+      if (global === undefined) {
+        var global = window;
+      }
+    </script>
+    <!-- https://github.com/aws/aws-amplify/issues/678 fix end-->
   </ion-content>
 </ion-app>

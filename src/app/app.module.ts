@@ -12,11 +12,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import {AuthInterceptorService} from './services/auth-interceptor.service';
-
+import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
+const config: SocketIoConfig = {url: 'http://localhost:3000', options:{}};
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, 
+    SocketIoModule.forRoot(config)
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
