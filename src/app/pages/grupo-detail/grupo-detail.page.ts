@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { NgForm } from '@angular/forms';
 import { stringify } from 'querystring';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-grupo-detail',
@@ -27,7 +28,7 @@ export class GrupoDetailPage implements OnInit {
   dateIn: string = "";
   dateInDate: string[] = [];
   listaUsuariosDentro: User[] = [];
-  constructor(private userService: UserService, private service: routesService) { }
+  constructor( private router: Router,private userService: UserService, private service: routesService) { }
   aa: TravelGroup;
   imageToShow: any;
   isImageLoading: boolean;
@@ -54,7 +55,7 @@ export class GrupoDetailPage implements OnInit {
 
   async  getTravelGroup() {
 
-    await this.service.getTravelGroup()
+    this.service.getTravelGroup()
       .subscribe((res) => {
 
         this.groupActual = res;
@@ -67,7 +68,7 @@ export class GrupoDetailPage implements OnInit {
         this.getImageFromService();
         }
 
-        //localStorage.setItem("idTravelGroup", "");
+        localStorage.setItem("nameTravelGroup", res.name);
 
       }, (error) => {
         console.log("Ha habido un problema recuperando el grupo");
@@ -179,6 +180,10 @@ export class GrupoDetailPage implements OnInit {
      if (image) {
         reader.readAsDataURL(image);
      }
+  }
+
+  chat(){    
+    this.router.navigateByUrl('/chat');
   }
 
   // async getTravelGrou2()

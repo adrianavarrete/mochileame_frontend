@@ -16,6 +16,8 @@ export class ChatPage implements OnInit {
   messages = [];
   currentUser = '';
   idUser = localStorage.getItem("idUser");
+  grupo = localStorage.getItem("nameTravelGroup");
+  
   u = new User('', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
  
@@ -28,6 +30,7 @@ export class ChatPage implements OnInit {
     this.currentUser = localStorage.getItem('user');
     
     this.socket.emit('set-name', this.currentUser);
+    this.socket.emit('set-grupo', this.grupo);
  
     this.socket.fromEvent('users-changed').subscribe(data => {
       let user = data['user'];

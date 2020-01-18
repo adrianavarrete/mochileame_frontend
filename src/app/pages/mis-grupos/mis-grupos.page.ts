@@ -43,13 +43,13 @@ export class MisGruposPage implements OnInit {
   imageToShow: any;
   isImageLoading: boolean;
 
-  ngOnInit() {
+  async ngOnInit() {
     this.id = localStorage.getItem('idUser');
-    this.getListaTravelGroups();
+    await this.getListaTravelGroups();
     this.show = true;
     this.listaTravelGroupsBackup = this.listaTravelGroups;
-    this.getImageFromService  ();
-    this.getUser(this.idUser);
+    await this.getImageFromService  ();
+    await this.getUser(this.idUser);
   }
 
 
@@ -149,7 +149,7 @@ onSubmit() {
 
 
 
-  getImageFromService() {
+  async getImageFromService() {
     this.isImageLoading = true;
     this.service.getFoto('uploads/dsffs.jpg').subscribe(data => {
       this.createImageFromBlob(data);
@@ -177,7 +177,7 @@ onSubmit() {
 
 
 
-  getListaTravelGroups() {
+  async getListaTravelGroups() {
     this.service.getTravelGroups()
       .subscribe((res) => {
 
@@ -211,12 +211,11 @@ onSubmit() {
   goToDetail(travelGroup: TravelGroup) {
 
     localStorage.setItem("idTravelGroup", travelGroup._id);
-    //this.router.navigateByUrl('/grupo-detail');
-    this.router.navigateByUrl('/chat');
+    this.router.navigateByUrl('/grupo-detail');
 
   }
 
-  getUser(idUser: string) {
+  async getUser(idUser: string) {
     this.userService.getUsuario(idUser)
       .subscribe(res => {
         console.log(res);
