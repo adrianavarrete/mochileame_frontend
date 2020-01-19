@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import {AuthInterceptorService} from './services/auth-interceptor.service';
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
-const config: SocketIoConfig = {url: 'http://localhost:3000', options:{}};
+const config: SocketIoConfig = {url: 'http://147.83.7.155:3000', options:{}};
 
 @NgModule({
   declarations: [AppComponent],
