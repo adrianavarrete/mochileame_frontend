@@ -53,6 +53,7 @@ export class MisGruposPage implements OnInit {
 
 
   ionViewWillEnter(){
+    this.listaTravelGroups = [];
     this.id = localStorage.getItem('idUser');
     this.getListaTravelGroups();
     this.show = true;
