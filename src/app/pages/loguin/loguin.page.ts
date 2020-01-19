@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
+import { Socket } from 'ngx-socket-io';
 
 
 
@@ -20,7 +21,7 @@ import { ActivatedRoute } from '@angular/router';
 export class LoguinPage implements OnInit {
 
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) {
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private socket: Socket) {
     // route.params.subscribe(val => { // necesario para poder volver a ejecutar ngoninit al volver de otra pagina
     //   this.getUser(this.userLogin._id);
     // });
@@ -30,10 +31,10 @@ export class LoguinPage implements OnInit {
 
 
   ngOnInit() {
+    
   }
 
   login(form: NgForm) {
-
 
     this.userService.login(form.value.username, form.value.password)
       .subscribe((res) => {
@@ -49,6 +50,7 @@ export class LoguinPage implements OnInit {
           this.router.navigateByUrl("/tabs/tab1"); //asereje ja deje escucfhimi escuchiti
         }
       });
+
   }
 
   goRegister() {
@@ -62,6 +64,7 @@ export class LoguinPage implements OnInit {
         this.userLogin = res;
 
       });
+
 
   }
 

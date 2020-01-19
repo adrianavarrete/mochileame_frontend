@@ -7,18 +7,16 @@
 </ion-header>
 
 
+<ion-content class="bg-image" >
 
+  <ion-grid fixed >
 
-<ion-content>
-
-  <ion-grid fixed>
-
-    <ion-row>
+    <ion-row >
 
       
 
       <ion-col size-md="6" offset-md="3">
-          <ion-button type="submit" expand="full" (click)="showFunc()">Abrir filtros</ion-button>
+          <ion-button type="submit" expand="block" (click)="showFunc()" class="btn1">Abrir filtros</ion-button>
        
         <form #filterForm="ngForm" (ngSumbit)="filterFunction(filterForm)">
           <ion-card [hidden]=show>
@@ -54,7 +52,7 @@
                 </ion-select>
               </ion-item>
               <div class="ion-padding">
-                <ion-button expand="block" type="submit" class="ion-no-margin" (click)="filterFunction(filterForm)">
+                <ion-button expand="block" type="submit" class="ion-no-margin" (click)="filterFunction(filterForm)" class="btn2">
                   Listo</ion-button>
               </div>
 
@@ -107,13 +105,13 @@
     </ion-row> 
           <ion-row> 
               <ion-col size-md="6" offset-md="3">
-            <ion-button expand="full"  (click)="goCreargrupo()">CREAR UN NUEVO GRUPO</ion-button>
+            <ion-button expand="block"  (click)="goCreargrupo()" class="btn2">CREAR UN NUEVO GRUPO</ion-button>
            </ion-col>
           </ion-row>
           <ion-row> 
             <ion-col size-md="6" offset-md="3">
-          <ion-button expand="full"  (click)="goForo()">FORO</ion-button>
+          <ion-button expand="block"  (click)="goForo()" class="btn1">FORO</ion-button>
          </ion-col>
         </ion-row>
-            </ion-grid>
-          </ion-content>
+  </ion-grid>
+</ion-content>

@@ -62,7 +62,8 @@ const routes: Routes = [
   {
     path: 'consejos',
     loadChildren: () => import('./pages/consejos/consejos.module').then( m => m.ConsejosPageModule)
-  },  {
+  },
+  {
     path: 'foro',
     loadChildren: () => import('./pages/foro/foro.module').then( m => m.ForoPageModule)
   },
@@ -73,6 +74,10 @@ const routes: Routes = [
   {
     path: 'creartema',
     loadChildren: () => import('./pages/creartema/creartema.module').then( m => m.CreartemaPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
   }
 
 

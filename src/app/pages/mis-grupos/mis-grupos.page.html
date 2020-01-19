@@ -18,7 +18,7 @@
       
 
       <ion-col size-md="6" offset-md="3">
-          <ion-button type="submit" expand="full" (click)="showFunc()">Abrir filtros</ion-button>
+          <ion-button type="submit" expand="block" (click)="showFunc()" class="btn1">Abrir filtros</ion-button>
        
         <form #filterForm="ngForm" (ngSumbit)="filterFunction(filterForm)">
           <ion-card [hidden]=show>
@@ -54,7 +54,7 @@
                 </ion-select>
               </ion-item>
               <div class="ion-padding">
-                <ion-button expand="block" type="submit" class="ion-no-margin" (click)="filterFunction(filterForm)">
+                <ion-button expand="block" type="submit" class="ion-no-margin" (click)="filterFunction(filterForm)" class="btn2">
                   Listo</ion-button>
               </div>
 

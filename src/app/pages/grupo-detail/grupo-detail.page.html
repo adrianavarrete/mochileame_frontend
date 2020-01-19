@@ -51,11 +51,15 @@
                 </ng-template>
 
                   <form #form="ngForm" (ngSubmit)="DelUserGroup()" method="post">
-                <ion-card [hidden]=show>
-                          <ion-button type="submit" expand="full">Salir del grupo</ion-button>                       
-              
-                          </ion-card>
+                    <ion-card [hidden]=show>
+                      <ion-button type="submit" expand="full">Salir del grupo</ion-button>  
+                    </ion-card>
                     </form>
+                    <form #form="ngForm" (ngSubmit)="chat()" method="post">
+                      <ion-card [hidden]=show>
+                        <ion-button type = "submit" expand = "full">Chat</ion-button>
+                      </ion-card>
+                    </form>  
              
           
             </ion-card-content>

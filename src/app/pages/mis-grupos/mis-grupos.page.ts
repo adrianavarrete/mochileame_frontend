@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { routesService } from '../../services/routesService';
 import { TravelGroup } from '../../models/travel-group';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
+import { Socket } from 'ngx-socket-io';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-mis-grupos',
@@ -14,10 +17,12 @@ import { Router } from "@angular/router";
 export class MisGruposPage implements OnInit {
 
 
-  constructor(private alertCtrl: AlertController, private menu: MenuController, private service: routesService, private router: Router) { }
+  constructor(private userService: UserService,private alertCtrl: AlertController, private menu: MenuController, private service: routesService, private router: Router, private socket:Socket) { }
 
+  user = new User('', '', '', '', '', '', '', '', '', '', '', '', '', '');
   existe: Boolean;
   id: string;
+  idUser = localStorage.getItem("idUser");
   travelGroup: TravelGroup;
   listaTravelGroups: TravelGroup[] = [];
   listaTravelGroupsBackup: TravelGroup[] = [];
@@ -38,6 +43,7 @@ export class MisGruposPage implements OnInit {
   imageToShow: any;
   isImageLoading: boolean;
 
+<<<<<<< HEAD
   ngOnInit() {
     // this.id = localStorage.getItem('idUser');
     // this.getListaTravelGroups();
@@ -48,17 +54,27 @@ export class MisGruposPage implements OnInit {
 
 
   ionViewWillEnter(){
+=======
+  async ngOnInit() {
+>>>>>>> 94ddb4b24ceda7c6f3b615f3d45b24272fc73007
     this.id = localStorage.getItem('idUser');
-    this.getListaTravelGroups();
+    await this.getListaTravelGroups();
     this.show = true;
     this.listaTravelGroupsBackup = this.listaTravelGroups;
+<<<<<<< HEAD
     }
+=======
+    await this.getImageFromService  ();
+    await this.getUser(this.idUser);
+  }
+
+>>>>>>> 94ddb4b24ceda7c6f3b615f3d45b24272fc73007
 
 
   fileProgress(fileInput: any) {
     this.fileData = <File>fileInput.target.files[0];
     this.preview();
-}
+  }
 
 preview() {
   // Show preview 
@@ -150,7 +166,7 @@ onSubmit() {
 
 
 
-  getImageFromService() {
+  async getImageFromService() {
     this.isImageLoading = true;
     this.service.getFoto('uploads/dsffs.jpg').subscribe(data => {
       this.createImageFromBlob(data);
@@ -178,7 +194,7 @@ onSubmit() {
 
 
 
-  getListaTravelGroups() {
+  async getListaTravelGroups() {
     this.service.getTravelGroups()
       .subscribe((res) => {
 
@@ -213,6 +229,15 @@ onSubmit() {
 
     localStorage.setItem("idTravelGroup", travelGroup._id);
     this.router.navigateByUrl('/grupo-detail');
+
+  }
+
+  async getUser(idUser: string) {
+    this.userService.getUsuario(idUser)
+      .subscribe(res => {
+        console.log(res);
+      });
+
   }
 
 
