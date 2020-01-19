@@ -15,7 +15,7 @@ export class routesService {
  
     constructor(private http: HttpClient){}
     
-    readonly URL_API = 'http://localhost:3000';
+    readonly URL_API = 'http://147.83.7.155:3000';
  
  
     getTravelGroups():Observable<TravelGroup[]>{
