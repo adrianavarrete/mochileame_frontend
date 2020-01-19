@@ -39,13 +39,20 @@ export class MisGruposPage implements OnInit {
   isImageLoading: boolean;
 
   ngOnInit() {
+    // this.id = localStorage.getItem('idUser');
+    // this.getListaTravelGroups();
+    // this.show = true;
+    // this.listaTravelGroupsBackup = this.listaTravelGroups;
+   // this.getImageFromService  ();
+  }
+
+
+  ionViewWillEnter(){
     this.id = localStorage.getItem('idUser');
     this.getListaTravelGroups();
     this.show = true;
     this.listaTravelGroupsBackup = this.listaTravelGroups;
-    this.getImageFromService  ();
-  }
-
+    }
 
 
   fileProgress(fileInput: any) {

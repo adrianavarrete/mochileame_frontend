@@ -41,11 +41,21 @@ export class HomePage implements OnInit {
 
 
   ngOnInit() {
+    // this.id = localStorage.getItem('idUser');
+    // this.getListaTravelGroups();
+    // this.listaTravelGroupsBackup = this.listaTravelGroups;
+    // this.show = true;
+  }
+
+  
+ 
+  ionViewWillEnter(){
     this.id = localStorage.getItem('idUser');
     this.getListaTravelGroups();
     this.listaTravelGroupsBackup = this.listaTravelGroups;
     this.show = true;
-  }
+    }
+
   
   goCreargrupo() {
     this.router.navigateByUrl('/creargrupo');
@@ -180,9 +190,6 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('/grupo-detail');
   }
 
-  ionViewWillEnter(){
-    console.log("tab1");
-  }
 }
 
 

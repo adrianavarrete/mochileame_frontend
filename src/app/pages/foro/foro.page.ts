@@ -31,10 +31,14 @@ export class ForoPage implements OnInit {
 
 
   ngOnInit() {
-    this.id = localStorage.getItem('idUser');
-    this.getPosts();
+    // this.id = localStorage.getItem('idUser');
+    // this.getPosts();
  
   }
+
+  ionViewWillEnter(){ this.id = localStorage.getItem('idUser');
+  this.getPosts();
+}
   
   goCrearpost() {
     this.router.navigateByUrl('/creartema');

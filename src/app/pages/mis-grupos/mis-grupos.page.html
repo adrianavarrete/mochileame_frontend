@@ -89,15 +89,6 @@
                     <div>Número de usuarios: {{travelGroup.users.length}}</div>
                   </button>
 
-                  <img [src]="imageToShow"
-                  alt="Place image title"
-                  *ngIf="!isImageLoading; else noImageFound">
-                <ng-template #noImageFound>
-                  <img src="fallbackImage.png" alt="Fallbackimage">
-                </ng-template>
-                </ion-col>
-                <ion-col>
-
                   <button ion-button icon-start clear small>
                     <ion-icon name="text"></ion-icon>
                     <div>¡Perteneces a este grupo!</div>
