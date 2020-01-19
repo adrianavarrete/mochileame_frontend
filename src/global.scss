@@ -25,9 +25,31 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.bg-img{
-    background-image: url("./assets/img/fondo2.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contains;
-} 
+ion-toolbar{
+    --background: rgb(3, 61, 116) ;
+    --color: rgb(255, 255, 255);
+}
+
+ion-content{
+    --background: url("./assets/img/external-content.duckduckgo.com.jpg") no-repeat; 
+    --background-position: center;
+    --background-size: contain;
+}
+.btn1{
+    --background: rgb(3, 116, 8) ;
+}
+.btn2{
+    --background: rgb(3, 61, 116) ;
+}
+
+ion-card{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    padding: 10px;
+    margin-left: 0px;
+}
+
+ion-item{
+    --background: rgba(255, 255, 255, 0.0);
+}

@@ -1,23 +1,39 @@
+.btn1{
+  --background: rgb(3, 116, 8) ;
+}
+.btn2{
+  --background: rgb(3, 61, 116) ;
+}
+ion-card{
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  padding: 10px;
+  margin-left: 0px;
+}
+  
 div {
-    background-color: inherit;
-    border: 0px;
-  }
+  background-color: inherit;
+  border: 0px;
+}
+
+
+
+ion-card-content {
+  border-radius: 0px 0px 10px 10px;
+}
   
   ion-card-header {
-    background-color: rgb(210, 253, 145);
+    background-color: rgba(255, 255, 255, 0.0);
     border-radius: 10px 10px 0px 0px;
   }
+  ion-item{
+    --background: rgba(255, 255, 255, 0.0);
+    font-weight: bold;
+}
   
-  ion-card-content {
-    border-radius: 0px 0px 10px 10px;
-  }
-
-  ion-button{
---background: #a0e420;
-
-  }
+  
 
 
-  .my-custom-menu {
-    --width: 500px;
-  }
+
+
