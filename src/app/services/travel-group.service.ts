@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class TravelGroupService {
 
-  readonly URL_API = 'http://localhost:3000/travelgroup';
+  readonly URL_API = 'http://147.83.7.155:3000/travelgroup';
 
 
   constructor() { }
