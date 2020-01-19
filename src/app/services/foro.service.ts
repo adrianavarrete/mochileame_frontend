@@ -43,7 +43,7 @@ export class ForoService {
 
   getFoto(url)
 {
-    return this.http.get('http://localhost:3000' + '/'+ url, { responseType: 'blob' });
+    return this.http.get('http://147.83.7.155:3000' + '/'+ url, { responseType: 'blob' });
    // http://localhost:3000/uploads/dsffs.jpg
 }
 
@@ -57,7 +57,7 @@ cambioPath(path)
 
 postFoto(formData){
   
-    return this.http.post('http://localhost:3000'  + '/foto2', formData);
+    return this.http.post('http://147.83.7.155:3000'  + '/foto2', formData);
 
 
      // this.http.post('url/to/your/api', formData)
